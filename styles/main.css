@@ -85,7 +85,6 @@ i {
     padding: 5px 10px !important;
     font-size: 25px;
 }
-<<<<<<< HEAD
 .pop-up {
     color: var(--text-color) !important;
     background-color: var(--bg-color) !important;
@@ -95,7 +94,7 @@ i {
     left: 50%;
     z-index: 1000;
     width: 50% !important;
-=======
+}
 .sure{
     position: fixed;
     background-color: #333;
@@ -121,5 +120,4 @@ i {
             border-radius: 15px;
         }
     }
->>>>>>> 9ca0eb2d4965035490e0eb87dd3990059e2b061c
 }
