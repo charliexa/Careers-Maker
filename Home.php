@@ -4,6 +4,12 @@
 
     <?php require "./components/header.php"; ?>
 
+    <!-- The Add Post Pop Up -->
+    <div class="pop-up container-fluid primary-colors">
+        <h3 class="text-center mb-5 ">Add Your Post</h3>
+        
+    </div>
+
     <div class="section container row-gap-3 d-flex flex-column mb-5 ">
         <div class="container d-flex justify-content-between ">
             <h2 class="fs-1 m-0 py-2 ">Feeds</h2>

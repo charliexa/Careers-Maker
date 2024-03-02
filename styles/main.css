@@ -84,3 +84,13 @@ i {
     padding: 5px 10px !important;
     font-size: 25px;
 }
+.pop-up {
+    color: var(--text-color) !important;
+    background-color: var(--bg-color) !important;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 10%;
+    left: 50%;
+    z-index: 1000;
+    width: 50% !important;
+}
