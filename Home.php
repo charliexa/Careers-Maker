@@ -54,8 +54,8 @@
                     <h2>Are you sure about this?</h2>
                 </div>
                 <div class="down">
-                    <a href="">YES</a>
-                    <a href="">NO</a>
+                    <a href="" class="bg-danger ">Confirm</a>
+                    <a href="" class="bg-dark" style="color: white !important;">Cancel</a>
                 </div>
             </div>
         </div>
