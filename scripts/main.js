@@ -48,7 +48,6 @@
                 menu.classList.remove("d-block");
             }
         });
-    
         let del_btn = document.querySelector(".delete");
         del_btn.addEventListener("click", () => {
             let sure = document.getElementById("sure");
