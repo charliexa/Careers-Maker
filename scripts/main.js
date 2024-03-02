@@ -43,7 +43,7 @@
         let btn_menu = document.querySelector(".brdr")
         const isClickInsideMenu = menu.contains(e.target);
         const isClickInsideMenuBtn = btn_menu.contains(e.target);
-        
+        console.log("first")
         if (!isClickInsideMenu && !isClickInsideMenuBtn) {
             menu.classList.remove("d-block");
         }
