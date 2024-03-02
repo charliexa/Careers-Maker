@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <!-- for blur in delete-->
-    <!-- Start The Add Post Pop Up -->
     <div class="overlay"></div>
+    <!-- Start The Add Post Pop Up -->
     <form class="pop-up py-5 container-fluid primary-colors d-flex justify-content-center align-items-center flex-column gap-4 d-none " action="" method="POST">
-        <h1 class="mb-3">Add Your Post</h1>
+        <h1 class="mb-3 btn_p">Add Your Post</h1>
         <div class="parent d-flex flex-row w-100">
             <div class="cont d-flex flex-column align-items-center w-100">
                 <label for="Name" class="fs-4">Full Name: </label>

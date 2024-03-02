@@ -98,9 +98,6 @@ i {
     width: 50% !important;
     border-radius: 20px;
 }
-.overlay {
-    opacity: 0.25;
-}
 .sure{
     position: fixed;
     background-color: #333;
