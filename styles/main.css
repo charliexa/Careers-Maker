@@ -85,3 +85,29 @@ i {
     padding: 5px 10px !important;
     font-size: 25px;
 }
+.sure{
+    position: fixed;
+    background-color: #333;
+    height: 300px;
+    width: 300px;
+    display: none;
+    .top{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+    }
+    .down{
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        margin-right: 50px;
+        gap: 20px;
+        a{
+            background-color: white;
+            color: black !important;
+            padding: 15px 20px;
+            border-radius: 15px;
+        }
+    }
+}
