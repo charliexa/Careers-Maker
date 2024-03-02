@@ -66,9 +66,14 @@
     let pop_up = document.querySelector(".pop-up")
     let page = document.querySelector(".con")
     let add = document.querySelector(".add-post")
-    add.onclick = (e) => {
-        pop_up.classList.remove("d-none")
-        pop_up.classList.add("d-block")
+    add.onclick = () => {
+        document.onclick = (e) => {
+            const isClickInsidePop = pop_up.contains(e.target)
+            if (!isClickInsidePop) {
+                pop_up.classList.toggle("d-none")
+                pop_up.classList.toggle("d-block")
+                page.classList.toggle("overlay")
+            }
+        }
     }
-
     // End Pop Up
