@@ -43,7 +43,6 @@
         let btn_menu = document.querySelector(".brdr")
         const isClickInsideMenu = menu.contains(e.target);
         const isClickInsideMenuBtn = btn_menu.contains(e.target);
-        console.log("first")
         if (!isClickInsideMenu && !isClickInsideMenuBtn) {
             menu.classList.remove("d-block");
         }
@@ -63,3 +62,13 @@
         });
     }
     // End Edit Menu
+    // Start Pop Up
+    let pop_up = document.querySelector(".pop-up")
+    let page = document.querySelector(".con")
+    let add = document.querySelector(".add-post")
+    add.onclick = (e) => {
+        pop_up.classList.remove("d-none")
+        pop_up.classList.add("d-block")
+    }
+
+    // End Pop Up
