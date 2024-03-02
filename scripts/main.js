@@ -32,35 +32,32 @@
     }
     // End Like Button
     // Start Edit Menu
-    let btn_menu = document.querySelector(".brdr")
-    let menu = document.querySelector(".menu")
-    let select = document.querySelector(".menu div")
-    btn_menu.onclick = () => {
-        menu.classList.toggle("d-block");
-    }
-    document.addEventListener("click", function(e) {
+    document.addEventListener("DOMContentLoaded", function() {
+        let btn_menu = document.querySelector(".brdr");
         let menu = document.querySelector(".menu");
-        let btn_menu = document.querySelector(".brdr")
-        const isClickInsideMenu = menu.contains(e.target);
-        const isClickInsideMenuBtn = btn_menu.contains(e.target);
-        if (!isClickInsideMenu && !isClickInsideMenuBtn) {
-            menu.classList.remove("d-block");
-        }
-    });
-    let del_btn = document.querySelector(".delete");
-    del_btn.addEventListener("click", ()=>{
-        let sure = document.getElementById("sure");
-        sure.style.display = "block"
-    })
-    let sure = document.getElementById("sure");
-    if(sure.style.display === "block"){
+        let overlay = document.querySelector(".overlay");
+    
+        btn_menu.onclick = () => {
+            menu.classList.toggle("d-block");
+        };
+        
         document.addEventListener("click", function(e) {
-            const isClickInsideSure = sure.contains(e.target);
-            if (!isClickInsideSure) {
-                sure.style.display = "none";
+            const isClickInsideMenu = menu.contains(e.target);
+            const isClickInsideMenuBtn = btn_menu.contains(e.target);
+            if (!isClickInsideMenu && !isClickInsideMenuBtn) {
+                menu.classList.remove("d-block");
             }
         });
-    }
+    
+        let del_btn = document.querySelector(".delete");
+        del_btn.addEventListener("click", () => {
+            let sure = document.getElementById("sure");
+            sure.style.display = "block";
+            overlay.classList.add("d-block");
+            document.body.classList.add("blur");
+        });
+    });
+    
     // End Edit Menu
     // Start Pop Up
     let pop_up = document.querySelector(".pop-up")
@@ -70,5 +67,4 @@
         pop_up.classList.remove("d-none")
         pop_up.classList.add("d-block")
     }
-
     // End Pop Up
