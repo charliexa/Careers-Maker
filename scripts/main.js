@@ -36,11 +36,13 @@
         let btn_menu = document.querySelector(".brdr");
         let menu = document.querySelector(".menu");
         let overlay = document.querySelector(".overlay");
-    
+        let del_btn = document.querySelector(".delete");
+        let edit = document.querySelector(".edit")
+
         btn_menu.onclick = () => {
             menu.classList.toggle("d-block");
         };
-        
+
         document.addEventListener("click", function(e) {
             const isClickInsideMenu = menu.contains(e.target);
             const isClickInsideMenuBtn = btn_menu.contains(e.target);
@@ -48,15 +50,21 @@
                 menu.classList.remove("d-block");
             }
         });
-        let del_btn = document.querySelector(".delete");
         del_btn.addEventListener("click", () => {
             let sure = document.getElementById("sure");
             sure.style.display = "block";
             overlay.classList.add("d-flex");
             document.body.classList.add("blur");
         });
+        edit.addEventListener("click", () => {
+            let edit_pop_up = document.querySelector(".edit-pop-up")
+            edit_pop_up.classList.remove("d-none");
+            edit_pop_up.classList.add("d-block");
+            overlay.style.display = "block";
+            document.body.classList.add("blur");
+        });
     });
-    
+
     // End Edit Menu
     // Start Pop Up
     let overlay = document.querySelector(".overlay");
@@ -64,10 +72,10 @@
     let page = document.querySelector(".con")
     let add = document.querySelector(".add-post")
     add.onclick = (e) => {
-        pop_up.classList.remove("d-none")
-        pop_up.classList.add("d-block")
+        pop_up.classList.remove("d-none");
+        pop_up.classList.add("d-block");
         overlay.classList.add("d-block");
-        document.body.classList.add("blur")
+        document.body.classList.add("blur");
     }
     document.addEventListener("click", function(e) {
         const isClickInsidePopUp = pop_up.contains(e.target);

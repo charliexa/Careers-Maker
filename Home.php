@@ -19,8 +19,29 @@
         <div class="the-post">
             <textarea name="post" id="post" cols="80" rows="5" placeholder="Express Yourself Freely!" class="w-100 "></textarea>
         </div>
+        <div class="text-center ">
+            <input type="submit" name="submit" value="Submit" class="btn btn-secondary fs-4 px-4 " style="color: white !important; ">
+        </div>
     </form>
     <!-- End The Add Post Pop Up -->
+    <!-- Start The Edit Post Pop Up -->
+    <form class="edit-pop-up py-5 container-fluid primary-colors d-flex justify-content-center align-items-center flex-column gap-4 d-none " action="" method="POST">
+        <h1 class="mb-3 btn_p">Edit Your Post</h1>
+        <div class="parent d-flex flex-row w-100">
+            <div class="cont d-flex flex-column align-items-center w-100">
+                <label for="Name" class="fs-4">Edit The Name Here: </label>
+                <input type="text" class="w-75 " placeholder="Edit Your Name">
+            </div>
+        </div>
+        <div class="the-post">
+            <textarea name="post" id="post" cols="79" rows="5" placeholder="Edit The Post Here!" class="w-100 "></textarea>
+        </div>
+        <div class="text-center">
+            <input type="submit" name="submit" value="Submit" class="btn btn-secondary fs-4 px-4 " style="color: white !important; ">
+            <button class="btn btn-secondary text-danger fs-4 px-4">Cancel</button>
+        </div>
+    </form>
+    <!-- End The Edit Post Pop Up -->
 
     <div class="con" style="position: static;">
         <?php require "./components/header.php"; ?>
@@ -39,7 +60,7 @@
                     <div class="brdr border d-flex justify-content-center ">
                         <i class="text-center fa-solid fs-3 fa-ellipsis-vertical align-items-center d-flex"></i>
                         <div class="menu">
-                            <div class="bg-first border-bottom border-secondary">Edit</div>
+                            <div class="bg-first border-bottom border-secondary edit">Edit</div>
                             <div class="bg-first delete">Delete</div>
                         </div>
                     </div>
