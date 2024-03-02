@@ -53,18 +53,30 @@
         del_btn.addEventListener("click", () => {
             let sure = document.getElementById("sure");
             sure.style.display = "block";
-            overlay.classList.add("d-block");
+            overlay.classList.add("d-flex");
             document.body.classList.add("blur");
         });
     });
     
     // End Edit Menu
     // Start Pop Up
+    let overlay = document.querySelector(".overlay");
     let pop_up = document.querySelector(".pop-up")
     let page = document.querySelector(".con")
     let add = document.querySelector(".add-post")
     add.onclick = (e) => {
         pop_up.classList.remove("d-none")
         pop_up.classList.add("d-block")
+        overlay.classList.add("d-block");
+        
     }
+    document.addEventListener("click", function(e) {
+        const isClickInsidePopUp = pop_up.contains(e.target);
+        const isClickInsideAdd = add.contains(e.target);
+        if (!isClickInsidePopUp && !isClickInsideAdd) {
+            pop_up.classList.remove("d-block");
+            pop_up.classList.add("d-none");
+            overlay.classList.remove("d-block");
+        }
+    });
     // End Pop Up
