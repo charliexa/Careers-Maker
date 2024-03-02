@@ -1,0 +1,86 @@
+/* Start Global Variable */
+:root {
+    --bg-color: #10182f;
+    --text-color: #b0b9d8;
+    --second-color: #3e307b ;
+}
+/* End Global Variable */
+body {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-color: black !important;
+    color: white !important;
+}
+body > footer:nth-child(1) {
+    bottom: 0;
+    position: absolute;
+    width: 100vw;
+}
+footer, header {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+a {
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+}
+header.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    padding: 10px 25px !important;
+}
+i {
+    cursor: pointer;
+}
+.active {
+    border-radius: 10px !important;
+    padding: 2px 7px;
+    color: black;
+    background-color: white;
+}
+.active::after {
+    content: " " attr(title) "";
+    text-transform: capitalize !important;
+}
+.active  a i {
+    color: var(--second-color) !important;
+}
+.btn {
+    color: var(--text-color) !important;
+    background-color: var(--bg-color) !important;
+}
+.date {
+    font-weight: 100;
+    color: rgb(122, 122, 122);
+    font-size: 14px;
+}
+.brdr {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.card {
+    color: var(--text-color) !important;
+    background-color: var(--bg-color) !important;
+}
+.btnn {
+    cursor: pointer;
+}
+.pink {
+    color: pink !important;
+}
+.menu {
+    position: absolute;
+    right: -60px;
+    top: 40px;
+    display: none;
+}
+.menu div {
+    color: var(--second-color) !important;
+    background-color: white !important;
+    padding: 5px 10px !important;
+    font-size: 25px;
+}
