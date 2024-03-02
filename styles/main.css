@@ -11,6 +11,7 @@ body {
     position: relative;
     background-color: black !important;
     color: white !important;
+    overflow-x: hidden;
 }
 body > footer:nth-child(1) {
     bottom: 0;
@@ -84,6 +85,7 @@ i {
     padding: 5px 10px !important;
     font-size: 25px;
 }
+<<<<<<< HEAD
 .pop-up {
     color: var(--text-color) !important;
     background-color: var(--bg-color) !important;
@@ -93,4 +95,31 @@ i {
     left: 50%;
     z-index: 1000;
     width: 50% !important;
+=======
+.sure{
+    position: fixed;
+    background-color: #333;
+    height: 300px;
+    width: 300px;
+    display: none;
+    .top{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+    }
+    .down{
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        margin-right: 50px;
+        gap: 20px;
+        a{
+            background-color: white;
+            color: black !important;
+            padding: 15px 20px;
+            border-radius: 15px;
+        }
+    }
+>>>>>>> 9ca0eb2d4965035490e0eb87dd3990059e2b061c
 }

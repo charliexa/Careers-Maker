@@ -25,7 +25,7 @@
                     <i class="text-center fa-solid fs-3 fa-ellipsis-vertical align-items-center d-flex"></i>
                     <div class="menu">
                         <div class="bg-first border-bottom border-secondary">Edit</div>
-                        <div class="bg-first">Delete</div>
+                        <div class="bg-first delete">Delete</div>
                     </div>
                 </div>
             </div>
@@ -33,6 +33,15 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae alias dignissimos voluptatum, iste et ab, fuga corporis nisi doloribus, explicabo deleniti. Debitis labore neque autem animi illo asperiores, blanditiis pariatur aliquam praesentium maxime nisi consequatur? Veritatis quia repudiandae voluptatibus incidunt ipsa, magnam eligendi sint odio quo possimus, deleniti porro quae. Alias omnis exercitationem libero aut fugit necessitatibus esse beatae nam minima quo, aliquid perspiciatis soluta cumque iusto! Ea nam nobis iusto repellendus sapiente itaque natus. Minima pariatur sed, debitis ipsum qui voluptate quod. Ad obcaecati sapiente distinctio quia, fugiat inventore, impedit facilis tempora, ratione libero mollitia optio vel beatae deserunt!
             </div>
             <div style="width: fit-content !important;" class="fs-5"><div class="btnn "><i class="fa-regular fa-heart"></i>  Like</div></div>
+        </div>
+        <div class="container sure" id="sure">
+            <div class="top">
+                <h2>Are you sure about this?</h2>
+            </div>
+            <div class="down">
+                <a href="">YES</a>
+                <a href="">NO</a>
+            </div>
         </div>
     </div>
 
