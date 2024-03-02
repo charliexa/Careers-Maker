@@ -67,7 +67,7 @@
         pop_up.classList.remove("d-none")
         pop_up.classList.add("d-block")
         overlay.classList.add("d-block");
-        
+        document.body.classList.add("blur")
     }
     document.addEventListener("click", function(e) {
         const isClickInsidePopUp = pop_up.contains(e.target);
