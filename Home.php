@@ -3,23 +3,15 @@
     // include("config/db_connect.php");
 
     // To prevent the empty variable problem in the value input from the inputs [email, full name, posts]
-    $email = $name = $body = '';
-    $errors = array("email" => "", "name" => "", "body" => "");
-
-    if (isset($_POST["sumbit"])) {
-
-        if (empty($_POST["email"])) {
-            $errors["email"] = "An Email Is required";
-        }
-        if (empty($_POST["name"])) {
-            $errors["name"] = "A name Is required";
-        }
-        if (empty($_POST["body"])) {
-            $errors["body"] = "This Input Is required";
-        }
-
+    include('./config/db_connect.php');
+    if (isset($_POST["submit"])) {
+        $NAME = $_POST["name"];
+        $EMAIL = $_POST["email"];
+        $BODY = $_POST["body"];
+        $insert = "INSERT INTO posts (Name, body, email) VALUES ('$NAME', '$BODY', '$EMAIL')";
+        mysqli_query($conn, $insert);
+        header('location: Home.php');
     }
-    print_r($errors);
 ?>
 
 <!DOCTYPE html>
