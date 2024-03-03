@@ -1,16 +1,23 @@
 <?php 
 
-    // include("config/db_connect.php");
-
-    // To prevent the empty variable problem in the value input from the inputs [email, full name, posts]
     include('./config/db_connect.php');
+
+    // Get All posts
+    $sql = 'SELECT name, body, Created_at FROM posts ORDER BY Created_at';
+
+    $result = mysqli_query($conn, $sql);
+
+    $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
     if (isset($_POST["submit"])) {
+
+        // insert data to db
         $NAME = $_POST["name"];
-        $EMAIL = $_POST["email"];
         $BODY = $_POST["body"];
-        $insert = "INSERT INTO posts (Name, body, email) VALUES ('$NAME', '$BODY', '$EMAIL')";
+        $insert = "INSERT INTO posts (name, body) VALUES ('$NAME', '$BODY')";
         mysqli_query($conn, $insert);
         header('location: Home.php');
+
     }
 ?>
 
@@ -24,16 +31,11 @@
         <div class="parent d-flex flex-row w-100">
             <div class="cont d-flex flex-column align-items-center w-100">
                 <label for="Name" class="fs-4">Full Name: </label>
-                <input type="text" class="w-75 " name="name" placeholder="Full Name" value="">
-                <div class="red-text"><?php echo $errors['email']; ?></div>
-            </div>
-            <div class="cont d-flex  flex-column align-items-center w-100 ">
-                <label for="Email" class="fs-4">Email: </label>
-                <input type="text" name="email" class="w-75 " placeholder="Email" value="">
+                <input type="text" class="w-75 " required name="name" placeholder="Full Name" value="">
             </div>
         </div>
         <div class="the-post">
-            <textarea name="body" cols="80" rows="5" placeholder="Express Yourself Freely!" class="w-100 " value=""></textarea>
+            <textarea name="body" cols="80" rows="5" required placeholder="Express Yourself Freely!" class="w-100 " value=""></textarea>
         </div>
         <div class="text-center">
             <input type="submit" name="submit" value="Submit" class="btn btn-secondary fs-4 px-4" style="color: white !important; ">
@@ -67,10 +69,11 @@
                 <h2 class="fs-1 m-0 py-2 ">Feeds</h2>
                 <button class="btn fs-4 add-post">Add Your Post!</button>
             </div>
+            <?php foreach($posts as $post): ?>
             <div class="row card p-3 gap-3">
                 <div class="col-12 d-flex justify-content-between">
                     <div class="prt1">
-                        <div class="name fw-bolder fs-5">George Lobko</div>
+                        <div class="name fw-bolder fs-5"><?php echo htmlspecialchars($post["name"])?></div>
                         <div class="date text-start">2 Hours Ago</div>
                     </div>
                     <div class="brdr border d-flex justify-content-center ">
@@ -82,10 +85,11 @@
                     </div>
                 </div>
                 <div class="col-12 fw-light fs-6" style="font-size: 18.5px !important;">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae alias dignissimos voluptatum, iste et ab, fuga corporis nisi doloribus, explicabo deleniti. Debitis labore neque autem animi illo asperiores, blanditiis pariatur aliquam praesentium maxime nisi consequatur? Veritatis quia repudiandae voluptatibus incidunt ipsa, magnam eligendi sint odio quo possimus, deleniti porro quae. Alias omnis exercitationem libero aut fugit necessitatibus esse beatae nam minima quo, aliquid perspiciatis soluta cumque iusto! Ea nam nobis iusto repellendus sapiente itaque natus. Minima pariatur sed, debitis ipsum qui voluptate quod. Ad obcaecati sapiente distinctio quia, fugiat inventore, impedit facilis tempora, ratione libero mollitia optio vel beatae deserunt!
+                    <?php echo htmlspecialchars($post["body"])?>
                 </div>
                 <div style="width: fit-content !important;" class="fs-5"><div class="btnn "><i class="fa-regular fa-heart"></i>  Like</div></div>
             </div>
+            <?php endforeach; ?>
             <div class="container sure" id="sure">
                 <div class="top">
                     <h2>Are you sure about this?</h2>
