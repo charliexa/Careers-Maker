@@ -1,13 +1,25 @@
 <?php 
 
-    include("config/db_connect.php");
+    // include("config/db_connect.php");
+
+    // To prevent the empty variable problem in the value input from the inputs [email, full name, posts]
+    $email = $name = $body = '';
+    $errors = array("email" => "", "name" => "", "body" => "");
 
     if (isset($_POST["sumbit"])) {
-        
-    } else {
-        
-    }
 
+        if (empty($_POST["email"])) {
+            $errors["email"] = "An Email Is required";
+        }
+        if (empty($_POST["name"])) {
+            $errors["name"] = "A name Is required";
+        }
+        if (empty($_POST["body"])) {
+            $errors["body"] = "This Input Is required";
+        }
+
+    }
+    print_r($errors);
 ?>
 
 <!DOCTYPE html>
@@ -20,18 +32,19 @@
         <div class="parent d-flex flex-row w-100">
             <div class="cont d-flex flex-column align-items-center w-100">
                 <label for="Name" class="fs-4">Full Name: </label>
-                <input type="text" class="w-75 " placeholder="Full Name">
+                <input type="text" class="w-75 " name="name" placeholder="Full Name" value="">
+                <div class="red-text"><?php echo $errors['email']; ?></div>
             </div>
             <div class="cont d-flex  flex-column align-items-center w-100 ">
                 <label for="Email" class="fs-4">Email: </label>
-                <input type="text" class="w-75 " placeholder="Email">
+                <input type="text" name="email" class="w-75 " placeholder="Email" value="">
             </div>
         </div>
         <div class="the-post">
-            <textarea name="post" id="post" cols="80" rows="5" placeholder="Express Yourself Freely!" class="w-100 "></textarea>
+            <textarea name="body" cols="80" rows="5" placeholder="Express Yourself Freely!" class="w-100 " value=""></textarea>
         </div>
-        <div class="text-center ">
-            <input type="submit" name="submit" value="Submit" class="btn btn-secondary fs-4 px-4 " style="color: white !important; ">
+        <div class="text-center">
+            <input type="submit" name="submit" value="Submit" class="btn btn-secondary fs-4 px-4" style="color: white !important; ">
         </div>
     </form>
     <!-- End The Add Post Pop Up -->
