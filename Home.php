@@ -20,9 +20,6 @@
 
     }
 
-    
-
-    echo $posts[0]["Created_at"];
 ?>
 
 <!DOCTYPE html>
@@ -74,11 +71,39 @@
                 <button class="btn fs-4 add-post">Add Your Post!</button>
             </div>
             <?php foreach($posts as $post): ?>
+            <?php
+                $post_creation_time_str = $post["Created_at"];
+
+                // Convert the string to a DateTime object
+                $post_creation_time = new DateTime($post_creation_time_str);
+            
+                $current_time = new DateTime();
+            
+                // Calculate the time difference
+                $time_difference = $current_time->diff($post_creation_time);
+            
+                $formatted_time_difference = '';
+            
+                if ($time_difference->d > 0) {
+                    $formatted_time_difference .= $time_difference->d . ' days ';
+                }
+            
+                if ($time_difference->h > 0) {
+                    $formatted_time_difference .= $time_difference->h . ' hours ';
+                }
+            
+                if ($time_difference->i > 0) {
+                    $formatted_time_difference .= $time_difference->i . ' minutes ';
+                }
+            
+                if ($time_difference->s > 0 || empty($formatted_time_difference)) {
+                    $formatted_time_difference .= $time_difference->s . ' seconds';
+                }?>
             <div class="row card p-3 gap-3">
                 <div class="col-12 d-flex justify-content-between">
                     <div class="prt1">
                         <div class="name fw-bolder fs-5"><?php echo htmlspecialchars($post["name"])?></div>
-                        <div class="date text-start">2 Hours Ago</div>
+                        <div class="date text-start"><?php echo htmlspecialchars($formatted_time_difference)?></div>
                     </div>
                     <div class="brdr border d-flex justify-content-center ">
                         <i class="text-center fa-solid fs-3 fa-ellipsis-vertical align-items-center d-flex"></i>
