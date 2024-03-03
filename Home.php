@@ -19,6 +19,10 @@
         header('location: Home.php');
 
     }
+
+    
+
+    echo $posts[0]["Created_at"];
 ?>
 
 <!DOCTYPE html>
