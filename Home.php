@@ -3,7 +3,7 @@
     include('./config/db_connect.php');
 
     // Get All posts
-    $sql = 'SELECT name, body, Created_at FROM posts ORDER BY Created_at';
+    $sql = 'SELECT id, name, body, Created_at FROM posts ORDER BY Created_at';
 
     $result = mysqli_query($conn, $sql);
 
@@ -99,6 +99,8 @@
             
                 if ($time_difference->d > 0) {
                 $formatted_time_difference = $time_difference->d . ' days ';
+                
+                // $Id = $post["id"];
                 }?>
             <div class="row card p-3 gap-3">
                 <div class="col-12 d-flex justify-content-between">
@@ -119,16 +121,16 @@
                 </div>
                 <div style="width: fit-content !important;" class="fs-5"><div class="btnn "><i class="fa-regular fa-heart"></i>  Like</div></div>
             </div>
-            <?php endforeach; ?>
             <div class="container sure" id="sure">
                 <div class="top">
                     <h2>Are you sure about this?</h2>
                 </div>
                 <div class="down">
-                    <a href="" class="bg-danger ">Confirm</a>
+                    <a href="delete.php?id=<?php echo $post['id'] ?>" class="bg-danger ">Confirm</a>
                     <a href="" class="bg-dark" style="color: white !important;">Cancel</a>
                 </div>
             </div>
+            <?php endforeach; ?>
         </div>
     
         <?php require "./components/footer.php"; ?>
