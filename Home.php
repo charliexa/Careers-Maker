@@ -86,21 +86,6 @@
                 $formatted_time_difference = '';
 
                 if ($time_difference->s > 0) {
-<<<<<<< HEAD
-                $formatted_time_difference = $time_difference->s . ' seconds';
-                }
-
-                if ($time_difference->i > 0) {
-                $formatted_time_difference = $time_difference->i . ' minutes ';
-                }
-
-                if ($time_difference->h > 0) {
-                $formatted_time_difference = $time_difference->h . ' hours ';
-                }
-
-                if ($time_difference->d > 0) {
-                $formatted_time_difference = $time_difference->d . ' days ';
-=======
                     $formatted_time_difference = $time_difference->s . ' seconds';
                 }
             
@@ -116,7 +101,6 @@
                 $formatted_time_difference = $time_difference->d . ' days ';
                 
                 // $Id = $post["id"];
->>>>>>> d05fc96cb48e8b1864d2b29b6b76801c12f62d76
                 }?>
             <div class="row card p-3 gap-3">
                 <div class="col-12 d-flex justify-content-between">
