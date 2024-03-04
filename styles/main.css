@@ -90,11 +90,11 @@ i {
 .pop-up, .edit-pop-up {
     color: var(--text-color) !important;
     background-color: var(--bg-color) !important;
-    position: absolute;
+    position: fixed;
     transform: translate(-50%, -50%);
     top: 40%;
     left: 50%;
-    z-index: 1000;
+    z-index: 999;
     width: 50% !important;
     border-radius: 20px;
 }

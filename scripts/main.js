@@ -17,46 +17,65 @@
     }
     // End header Name Transition
     // Start Like Button
-    let btn = document.querySelector(".btnn")
-    let icon = document.querySelector(".fa-heart")
-    btn.onclick = () => {
-        if (btn.classList.contains("pink")) {
-            icon.classList.add("fa-regular")
-            icon.classList.remove("fa-solid")
-            btn.classList.remove("pink")
-        } else {
-            icon.classList.remove("fa-regular")
-            icon.classList.add("fa-solid")
-            btn.classList.add("pink")
+    let btn = document.querySelectorAll(".btnn")
+    btn.forEach(ele => {
+        ele.onclick = () => {
+            let icon = ele.firstChild;
+            if (ele.classList.contains("pink")) {
+                icon.classList.add("fa-regular")
+                icon.classList.remove("fa-solid")
+                ele.classList.remove("pink")
+            } else {
+                icon.classList.remove("fa-regular")
+                icon.classList.add("fa-solid")
+                ele.classList.add("pink")
+            }
         }
-    }
+    });
     // End Like Button
     // Start Edit Menu
     document.addEventListener("DOMContentLoaded", function() {
-        let btn_menu = document.querySelector(".brdr");
-        let menu = document.querySelector(".menu");
+        let btn_menu = document.querySelectorAll(".brdr");
         let overlay = document.querySelector(".overlay");
     
-        btn_menu.onclick = () => {
-            menu.classList.toggle("d-block");
-        };
-        
-        document.addEventListener("click", function(e) {
-            const isClickInsideMenu = menu.contains(e.target);
-            const isClickInsideMenuBtn = btn_menu.contains(e.target);
-            if (!isClickInsideMenu && !isClickInsideMenuBtn) {
-                menu.classList.remove("d-block");
-            }
+        btn_menu.forEach(ele => {
+            ele.onclick = () => {
+                let menu = ele.children[1];
+                menu.classList.toggle("d-block");
+                document.addEventListener("click", function(e) {
+                    const isClickInsideMenu = menu.contains(e.target);
+                    const isClickInsideMenuBtn = ele.contains(e.target);
+                    if (!isClickInsideMenu && !isClickInsideMenuBtn) {
+                        menu.classList.remove("d-block");
+                    }
+                });
+            };
         });
-        let del_btn = document.querySelector(".delete");
-        del_btn.addEventListener("click", () => {
-            let sure = document.getElementById("sure");
-            sure.style.display = "block";
-            overlay.classList.add("d-flex");
-            document.body.classList.add("blur");
+
+        let del_btn = document.querySelectorAll(".delete");
+
+        del_btn.forEach(ele => {
+            ele.addEventListener("click", () => {
+                let sure = document.getElementById("sure");
+                sure.style.display = "block";
+                overlay.classList.add("d-flex");
+                document.body.classList.add("blur");
+            });
         });
+        // Start edit-pop-up
+        let edit_btn = document.querySelectorAll(".edit");
+        edit_btn.forEach(ele => {
+            ele.addEventListener("click", ()=>{
+                let edit_pop_up = document.getElementById("edit-pop-up");
+                console.log("doIt");
+                edit_pop_up.classList.remove("d-none");
+                edit_pop_up.classList.add("d-flex");
+                overlay.classList.add("d-flex");
+                document.body.classList.add("blur");
+            })
+        });
+        // End edit-pop-up
     });
-    
     // End Edit Menu
     // Start Pop Up
     let overlay = document.querySelector(".overlay");
