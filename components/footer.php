@@ -24,7 +24,7 @@
         </div>
         <div class="container my-4">
             <div class="row my-3 align-items-center row-gap-5">
-                <div class="col-12 col-sm-4 ">Created With Love By <a href="#" class="text-decoration-none">Oussama</a></div>
+                <div class="col-12 col-sm-4 ">Created With Love By <a href="#" class="text-decoration-none">Oussama & Yahya</a></div>
                 <div class="col-12 col-sm-4 d-flex gap-5 justify-content-center align-items-center">
                     <i class="fa-brands fa-facebook-f"></i>
                     <i class="fa-brands fa-github"></i>
@@ -37,6 +37,6 @@
     </div>
 </footer>
 <script>
-        <?php include "scripts/main.js" ?>
+    <?php include "scripts/main.js" ?>
 </script>
 </body>
