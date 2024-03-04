@@ -14,53 +14,12 @@
         // insert data to db
         $NAME = $_POST["name"];
         $BODY = $_POST["body"];
+        // INSERT INTO `posts` (`id`, `name`, `body`, `Created_at`) VALUES ('4', 'Oussama', 'asdflòkasjfklòajsfsadòfj', current_timestamp());s
         $insert = "INSERT INTO posts (name, body) VALUES ('$NAME', '$BODY')";
         mysqli_query($conn, $insert);
         header('location: Home.php');
 
     }
-
-    // $post_creation_time_str = $posts[0]["Created_at"];
-
-    // $post_creation_time = new DateTime($post_    creation_time_str);
-
-
-    // $current_time = new DateTime();
-
-
-    // $time_difference = $current_time->diff($post_creation_time);
-
-    // echo "Time difference: " . $time_difference->format("%d days, %h hours, %i minutes, %s seconds");
-
-    // $post_creation_time_str = $posts[0]["Created_at"];
-
-    // // Convert the string to a DateTime object
-    // $post_creation_time = new DateTime($post_creation_time_str);
-
-    // $current_time = new DateTime();
-
-    // // Calculate the time difference
-    // $time_difference = $current_time->diff($post_creation_time);
-
-    // $formatted_time_difference = '';
-
-    // if ($time_difference->d > 0) {
-    //     $formatted_time_difference .= $time_difference->d . ' days ';
-    // }
-
-    // if ($time_difference->h > 0) {
-    //     $formatted_time_difference .= $time_difference->h . ' hours ';
-    // }
-
-    // if ($time_difference->i > 0) {
-    //     $formatted_time_difference .= $time_difference->i . ' minutes ';
-    // }
-
-    // if ($time_difference->s > 0 || empty($formatted_time_difference)) {
-    //     $formatted_time_difference .= $time_difference->s . ' seconds';
-    // }
-
-    // echo $formatted_time_difference;
 
 ?>
 
@@ -69,7 +28,7 @@
     <!-- for blur in delete-->
     <div class="overlay"></div>
     <!-- Start The Add Post Pop Up -->
-    <form class="pop-up py-5 container-fluid primary-colors d-flex justify-content-center align-items-center flex-column gap-4 d-none " action="Home.php" method="POST">
+    <form class="pop-up py-5 container-fluid primary-colors justify-content-center align-items-center flex-column gap-4 d-none " action="Home.php" method="POST">
         <h1 class="mb-3 btn_p">Add Your Post</h1>
         <div class="parent d-flex flex-row w-100">
             <div class="cont d-flex flex-column align-items-center w-100">
@@ -86,7 +45,7 @@
     </form>
     <!-- End The Add Post Pop Up -->
     <!-- Start The Edit Post Pop Up -->
-    <form class="edit-pop-up py-5 container-fluid primary-colors d-flex justify-content-center align-items-center flex-column gap-4 d-none " action="" method="POST">
+    <form class="edit-pop-up py-5 container-fluid primary-colors d-flex justify-content-center align-items-center flex-column gap-4 d-none" id="edit-pop-up" action="" method="POST">
         <h1 class="mb-3 btn_p">Edit Your Post</h1>
         <div class="parent d-flex flex-row w-100">
             <div class="cont d-flex flex-column align-items-center w-100">
@@ -118,28 +77,28 @@
 
                 // Convert the string to a DateTime object
                 $post_creation_time = new DateTime($post_creation_time_str);
-            
+
                 $current_time = new DateTime();
-            
+
                 // Calculate the time difference
                 $time_difference = $current_time->diff($post_creation_time);
-            
+
                 $formatted_time_difference = '';
-            
-                if ($time_difference->d > 0) {
-                    $formatted_time_difference .= $time_difference->d . ' days ';
-                }
-            
-                if ($time_difference->h > 0) {
-                    $formatted_time_difference .= $time_difference->h . ' hours ';
+
+                if ($time_difference->s > 0) {
+                    $formatted_time_difference = $time_difference->s . ' seconds';
                 }
             
                 if ($time_difference->i > 0) {
-                    $formatted_time_difference .= $time_difference->i . ' minutes ';
+                    $formatted_time_difference = $time_difference->i . ' minutes ';
                 }
             
-                if ($time_difference->s > 0 || empty($formatted_time_difference)) {
-                    $formatted_time_difference .= $time_difference->s . ' seconds';
+                if ($time_difference->h > 0) {
+                    $formatted_time_difference = $time_difference->h . ' hours ';
+                }
+            
+                if ($time_difference->d > 0) {
+                $formatted_time_difference = $time_difference->d . ' days ';
                 }?>
             <div class="row card p-3 gap-3">
                 <div class="col-12 d-flex justify-content-between">
