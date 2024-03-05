@@ -19,17 +19,17 @@
         <div class="icon text-start">Carrers</div>
         <ul style="margin-bottom: 0px !important;" class="list-unstyled d-flex flex-row gap-5">
             <li title="<?php echo substr($curPageName, 0, -4)?>" class="link-1 active">
-                <a style="margin-right: 2px !important;" href="http://localhost/Carrers">
+                <a style="margin-right: 2px !important;" href="Home.php">
                     <i class="fa-solid fa-house"></i>
                 </a>
             </li>
             <li title="<?php echo substr($curPageName, 0, -4)?>" class="link-2">
-                <a style="margin-right: 2px !important;" href="http://localhost/Carrers/jobs.php">
+                <a style="margin-right: 2px !important;" href="jobs.php">
                     <i class="fa-solid fa-briefcase"></i>
                 </a>
             </li>
             <li title="<?php echo substr($curPageName, 0, -4)?>" class="link-3">
-                    <a style="margin-right: 2px !important;" href="http://localhost/Carrers/contact-us.php"><i class="fa-solid fa-square-phone"></i>
+                    <a style="margin-right: 2px !important;" href="contact-us.php"><i class="fa-solid fa-square-phone"></i>
                 </a>
             </li>
         </ul>
