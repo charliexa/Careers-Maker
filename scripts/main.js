@@ -79,8 +79,8 @@
         let edit_btn = document.querySelectorAll(".edit");
         edit_btn.forEach(ele => {
             ele.addEventListener("click", ()=>{
-                let edit_pop_up = document.getElementById("edit-pop-up");
-                console.log("doIt");
+                let editId = ele.closest('.card').title;
+                let edit_pop_up = document.getElementById(`edit-pop-up-${editId}`);
                 edit_pop_up.classList.remove("d-none");
                 edit_pop_up.classList.add("d-flex");
                 overlay.classList.add("d-flex");
@@ -90,6 +90,7 @@
         // End edit-pop-up
     });
     // End Edit Menu
+
     // Start Pop Up
     let overlay = document.querySelector(".overlay");
     let pop_up = document.querySelector(".pop-up")
