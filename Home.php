@@ -132,7 +132,7 @@
                 
                 // $Id = $post["id"];
                 }?>
-            <div class="row card p-3 gap-3">
+            <div class="row card p-3 gap-3" title="<?php echo htmlspecialchars($post['id']) ?>">
                 <div class="col-12 d-flex justify-content-between">
                     <div class="prt1">
                         <div class="name fw-bolder fs-5"><?php echo htmlspecialchars($post["name"])?></div>
@@ -151,7 +151,8 @@
                 </div>
                 <div style="width: fit-content !important;" class="fs-5"><div class="btnn "><i class="fa-regular fa-heart"></i>  Like</div></div>
             </div>
-            <div class="container sure" id="sure">
+            <!-- Start Sure Pop up -->
+            <div class="container sure" id="sure-<?php echo $post['id']; ?>">
                 <div class="top">
                     <h2>Are you sure about this?</h2>
                 </div>
@@ -160,6 +161,8 @@
                     <a href="" class="bg-dark" style="color: white !important;">Cancel</a>
                 </div>
             </div>
+            <!-- End Sure Pop up -->
+
             <?php endforeach; ?>
         </div>
 

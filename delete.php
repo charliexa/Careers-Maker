@@ -3,9 +3,8 @@
     include('./config/db_connect.php');
 
     $ID = $_GET['id'];
-    echo $ID;
 
-    // mysqli_query($conn, "DELETE FROM posts WHERE id=$ID");
-    // header('location: Home.php');
+    mysqli_query($conn, "DELETE FROM posts WHERE id=$ID");
+    header('location: Home.php');
 
 ?>

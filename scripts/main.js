@@ -52,16 +52,29 @@
             };
         });
 
+        // let del_btn = document.querySelectorAll(".delete");
+
+        // del_btn.forEach(ele => {
+        //     ele.addEventListener("click", () => {
+        //         let sure = document.getElementById("sure");
+        //         sure.style.display = "block";
+        //         overlay.classList.add("d-flex");
+        //         document.body.classList.add("blur");
+        //     });
+        // });
+
         let del_btn = document.querySelectorAll(".delete");
 
         del_btn.forEach(ele => {
             ele.addEventListener("click", () => {
-                let sure = document.getElementById("sure");
+                let postId = ele.closest('.card').title;
+                let sure = document.getElementById(`sure-${postId}`);
                 sure.style.display = "block";
                 overlay.classList.add("d-flex");
                 document.body.classList.add("blur");
             });
         });
+
         // Start edit-pop-up
         let edit_btn = document.querySelectorAll(".edit");
         edit_btn.forEach(ele => {
