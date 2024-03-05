@@ -147,7 +147,7 @@
 
             <!-- Start The Edit Post Pop Up -->
             <form class="edit-pop-up py-5 container-fluid primary-colors d-flex justify-content-center align-items-center flex-column gap-4 d-none" id="edit-pop-up-<?php echo htmlspecialchars($post['id']) ?>" action="" method="POST">
-                    <h1 class="mb-3 btn_p">Edit Your Post</h1>
+                    <h1 class="mb-3 btn_p">Edit Your Post</h1>C
                     <div class="parent d-flex flex-row w-100">
                         <div class="cont d-flex flex-column align-items-center w-100">
                             <label for="Name" class="fs-4">Edit The Name Here: </label>
