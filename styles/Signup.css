@@ -44,6 +44,7 @@ form{
     align-items: center;
     margin: 0 auto;
     button{
+        cursor: pointer;
         text-align: center;
         width: 50%;
         padding: 7px 0 ;
@@ -54,8 +55,8 @@ form{
     }
 }
 .active{
-    background-color: var(--text-color) !important;
-    color: var(--second-color) !important;
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
 }
 .hide{
     display: none;
@@ -73,7 +74,7 @@ form{
     cursor: pointer;
 }
 #submit:hover {
-    transition-duration: 0.2s;
+    transition-duration: 0.3s;
     transition-timing-function: ease-out;
     filter: brightness(70%);
 }
