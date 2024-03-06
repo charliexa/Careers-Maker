@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/Signup.css">
-    <title>Signe up</title>
+    <title>Sign up</title>
     <style>
         <?php 
-            include "./styles/Signup.css";
             include "./styles/main.css";
+            include "./styles/Signup.css";
         ?>
     </style>
 </head>
@@ -16,7 +16,7 @@
     <form action="" method="post">
         <h1>Create Account</h1>
         <div class="choices">
-            <button id="user" class="active">User Account</button>
+            <button id="user" class="active ">User Account</button>
             <button id="company" >Company Account</button>
         </div>
         <div>

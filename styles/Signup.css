@@ -10,7 +10,7 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(120deg, black, #10182f, #333, #444);
+    background: linear-gradient(120deg, var(--bg-color), #151515);
     color: var(--text-color);
     overflow: hidden;
 }
@@ -26,7 +26,7 @@ form{
         margin-top: 0;
     }
     fieldset{
-        border: 3px solid black;
+        border: 1px solid black;
         border-radius: 20px;
         margin: 20px;
         color: var(--text-color);
@@ -37,6 +37,7 @@ form{
             height: 50%;
             font-size: 20px;
             color: var(--text-color);
+            width: 100%;
             &:focus{
                 outline: none;
             }
@@ -44,11 +45,14 @@ form{
     }
 }
 .choices{
-    width: 80%;
+    width: 90%;
     display: flex;
     align-items: center;
     margin: 0 auto;
+    font-size: 20px;
+    column-gap: 10px;
     button{
+        font-size: 15px;
         cursor: pointer;
         text-align: center;
         width: 50%;
