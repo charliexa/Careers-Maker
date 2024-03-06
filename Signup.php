@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
+    <link rel="stylesheet" href="/styles/Signup.css">
+    <title>Signe up</title>
     <style>
         <?php 
-            include "./styles/main.css";
             include "./styles/Signup.css";
+            include "./styles/main.css";
         ?>
     </style>
 </head>
@@ -15,7 +16,7 @@
     <form action="" method="post">
         <h1>Get Started!</h1>
         <div class="choices">
-            <button id="user" class="active ">User Account</button>
+            <button id="user" class="active">User Account</button>
             <button id="company" >Company Account</button>
         </div>
         <div>
