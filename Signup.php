@@ -70,6 +70,8 @@
             inputs.forEach(ele => {
                 ele.value = "";
             });
+            let submit =document.getElementById("submit")
+            submit.value = "Sign Up"
             userBtn.classList.add("active");
             companyBtn.classList.remove("active");
             userForm.classList.remove("hide");
@@ -80,6 +82,8 @@
             inputs.forEach(ele => {
                 ele.value = "";
             });
+            let submit =document.getElementById("submit")
+            submit.value = "Sign Up"
             userBtn.classList.remove("active");
             companyBtn.classList.add("active");
             userForm.classList.add("hide");
