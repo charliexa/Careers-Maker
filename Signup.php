@@ -66,7 +66,6 @@
         console.log(companyBtn);
         userBtn.addEventListener("click", (e)=>{
             e.preventDefault()
-            console.log(inputs)
             inputs.forEach(ele => {
                 ele.value = "";
             });
