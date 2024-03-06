@@ -7,7 +7,8 @@
     <title>Signe up</title>
     <style>
         <?php 
-        include "./styles/Signup.css";
+            include "./styles/Signup.css";
+            include "./styles/main.css";
         ?>
     </style>
 </head>
@@ -63,7 +64,7 @@
         console.log(userBtn);
         console.log(companyBtn);
         userBtn.addEventListener("click", (e)=>{
-            e.defaultPrevented()
+            e.preventDefault()
             userBtn.classList.add("active");
             companyBtn.classList.remove("active");
             userForm.classList.remove("hide");
