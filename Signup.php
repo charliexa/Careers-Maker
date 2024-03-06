@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/Signup.css">
-    <title>Signe up</title>
+    <title>Sign up</title>
     <style>
         <?php require "./styles/Signup.css"; ?>
     </style>
