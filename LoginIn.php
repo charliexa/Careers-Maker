@@ -44,10 +44,14 @@
         let companyBtn = document.getElementById("company");
         let userForm = document.getElementById("userName");
         let companyForm = document.getElementById("orgName");
+        let inputs = document.querySelectorAll("input");
         console.log(userBtn);
         console.log(companyBtn);
         userBtn.addEventListener("click", (e)=>{
             e.preventDefault()
+            inputs.forEach(ele => {
+                ele.value = "";
+            });
             userBtn.classList.add("active");
             companyBtn.classList.remove("active");
             userForm.classList.remove("hide");
@@ -55,6 +59,9 @@
         })
         companyBtn.addEventListener("click", (e)=>{
             e.preventDefault()
+            inputs.forEach(ele => {
+                ele.value = "";
+            });
             userBtn.classList.remove("active");
             companyBtn.classList.add("active");
             userForm.classList.add("hide");
