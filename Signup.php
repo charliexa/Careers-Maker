@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/Signup.css">
     <title>Signe up</title>
     <style>
-        <?php require "./styles/Signup.css"; ?>
+        <?php 
+        include "./styles/Signup.css";
+        ?>
     </style>
 </head>
 <body>
     <form action="" method="post">
-        <h1>Sing up</h1>
+        <h1>Create Account</h1>
+        <div class="choices">
+            <button id="user" class="active">User Account</button>
+            <button id="company" >Company Account</button>
+        </div>
         <div>
             <div>
                 <fieldset>
@@ -37,14 +42,26 @@
                     <input type="password" name="Cpassword" id="Cpassword">
                 </fieldset>
             </div>
-            <div class="check">
-                <label for=""><input type="radio" name="choice" value="user">user</label>
-                <label for=""><input type="radio" name="choice" value="admin">admin</label>
-            </div>
             <div class="submit-cont" style="display: flex; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" id="submit">
             </div>
         </div>
     </form>
+    <script>
+        //Start type signUp choices
+        let userBtn = document.getElementById("user");
+        let companyBtn = document.getElementById("company");
+        console.log(userBtn);
+        console.log(companyBtn);
+        userBtn.addEventListener("click", ()=>{
+            userBtn.classList.add("active");
+            companyBtn.classList.remove("active");
+        })
+        companyBtn.addEventListener("click", ()=>{
+            userBtn.classList.remove("active");
+            companyBtn.classList.add("active");
+        })
+        //End type signUp choices
+    </script>
 </body>
 </html>
