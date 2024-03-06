@@ -55,8 +55,11 @@ form{
     }
 }
 .active{
-    background-color: var(--bg-color) !important;
-    color: var(--text-color) !important;
+    background-color: var(--text-color) !important;
+    color: var(--second-color) !important;
+}
+.hide{
+    display: none;
 }
 #submit{
     color: var(--text-color);
