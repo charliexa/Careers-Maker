@@ -132,7 +132,7 @@
             <!-- End Sure Pop up -->
 
             <!-- Start The Edit Post Pop Up -->
-            <?php require "./components/EditPopUp.php" ?>
+                <?php require "./components/EditPopUp.php" ?>
             <!-- End The Edit Post Pop Up -->
 
             <?php endforeach; ?>
