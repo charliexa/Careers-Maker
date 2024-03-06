@@ -31,16 +31,17 @@
         $body = $_POST['edit-body'];
         $id = $_POST['id'];
 
-        // if (empty($name) && !empty($body)) {
-        //     $sql = "UPDATE posts SET body='$body' WHERE id='$id'";
-        // } else if (empty($body) && !empty($name)) {
-        //     $sql = "UPDATE posts SET name='$name' WHERE id='$id'";
-        // }
+        if (empty($name) && !empty($body)) {
+            $sql = "UPDATE posts SET body='$body' WHERE id='$id'";
+        } else if (empty($body) && !empty($name)) {
+            $sql = "UPDATE posts SET name='$name' WHERE id='$id'";
+        } else {
+            $sql = "UPDATE posts SET name='$name', body='$body' WHERE id='$id'";
+        }
 
-        $sql = "UPDATE posts SET name='$name', body='$body' WHERE id='$id'";
 
         if (mysqli_query($conn, $sql)) {
-            echo "Record updated successfully";
+
         } else {
             echo "Error updating record: " . mysqli_error($conn);
         }
