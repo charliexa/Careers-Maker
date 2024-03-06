@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/Signup.css">
     <title>Signe up</title>
+    <style>
+        <?php require "./styles/Signup.css"; ?>
+    </style>
 </head>
 <body>
     <form action="" method="post">
@@ -38,7 +41,7 @@
                 <label for=""><input type="radio" name="choice" value="user">user</label>
                 <label for=""><input type="radio" name="choice" value="admin">admin</label>
             </div>
-            <div style="display: flex; align-items: center;justify-content: center;">
+            <div class="submit-cont" style="display: flex; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" id="submit">
             </div>
         </div>
