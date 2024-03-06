@@ -52,8 +52,6 @@
         //Start type signUp choices
         let userBtn = document.getElementById("user");
         let companyBtn = document.getElementById("company");
-        console.log(userBtn);
-        console.log(companyBtn);
         userBtn.addEventListener("click", (e)=>{
             e.defaultPrevented()
             userBtn.classList.add("active");
