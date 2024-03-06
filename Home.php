@@ -56,16 +56,16 @@
     <!-- for blur in delete-->
     <div class="overlay"></div>
     <!-- Start The Add Post Pop Up -->
-    <form class="pop-up py-5 container-fluid primary-colors justify-content-center align-items-center flex-column gap-4 d-none " action="Home.php" method="POST">
-        <h1 class="mb-3 btn_p">Add Your Post</h1>
-        <div class="parent d-flex flex-row w-100">
+    <form class="pop-up py-5 container-fluid primary-colors justify-content-center align-items-center flex-column gap-5 d-none " action="Home.php" method="POST">
+        <h1 class="mb-3 btn_p text-center ">Add Your Post</h1>
+        <div class="parent d-flex flex-row">
             <div class="cont d-flex flex-column align-items-center w-100">
                 <label for="Name" class="fs-4">Full Name: </label>
                 <input type="text" class="w-75 " required name="name" placeholder="Full Name" value="">
             </div>
         </div>
-        <div class="the-post">
-            <textarea name="body" cols="80" rows="5" required placeholder="Express Yourself Freely!" class="w-100 " value=""></textarea>
+        <div class="the-post text-center mt-4 ">
+            <textarea name="body" cols="80" rows="5" required placeholder="Express Yourself Freely!" class="w-75" value=""></textarea>
         </div>
         <div class="text-center">
             <input type="submit" name="submit" value="Submit" class="btn btn-secondary fs-4 px-4" style="color: white !important; ">
@@ -114,7 +114,7 @@
                 
                 // $Id = $post["id"];
                 }?>
-            <div class="row card p-3 gap-3" title="<?php echo htmlspecialchars($post['id']) ?>">
+            <div class="row card p-3 gap-3" id="<?php echo htmlspecialchars($post['id']) ?>">
                 <div class="col-12 d-flex justify-content-between">
                     <div class="prt1">
                         <div class="name fw-bolder fs-5"><?php echo htmlspecialchars($post["name"])?></div>
@@ -146,24 +146,8 @@
             <!-- End Sure Pop up -->
 
             <!-- Start The Edit Post Pop Up -->
-            <form class="edit-pop-up py-5 container-fluid primary-colors d-flex justify-content-center align-items-center flex-column gap-4 d-none" id="edit-pop-up-<?php echo htmlspecialchars($post['id']) ?>" action="" method="POST">
-                    <h1 class="mb-3 btn_p">Edit Your Post</h1>
-                    <div class="parent d-flex flex-row w-100">
-                        <div class="cont d-flex flex-column align-items-center w-100">
-                            <label for="Name" class="fs-4">Edit The Name Here: </label>
-                            <input type="text" class="w-75 " name="edit-name" placeholder="Edit Your Name">
-                        </div>
-                    </div>
-                    <div class="the-post">
-                        <textarea name="edit-body" id="post" cols="79" rows="5" placeholder="Edit The Post Here!" class="w-100 "></textarea>
-                    </div>
-                    <div class="text-center">
-                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($post["id"])?>">
-                        <input type="submit" name="edit-submit" value="Submit" class="btn btn-secondary fs-4 px-4 " style="color: white !important; ">
-                        <button class="btn btn-secondary text-danger fs-4 px-4">Cancel</button>
-                    </div>
-                </form>
-                <!-- End The Edit Post Pop Up -->
+            <?php require "./components/EditPopUp.php" ?>
+            <!-- End The Edit Post Pop Up -->
 
             <?php endforeach; ?>
         </div>

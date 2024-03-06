@@ -67,7 +67,7 @@
 
         del_btn.forEach(ele => {
             ele.addEventListener("click", () => {
-                let postId = ele.closest('.card').title;
+                let postId = ele.closest('.card').id;
                 let sure = document.getElementById(`sure-${postId}`);
                 sure.style.display = "block";
                 overlay.classList.add("d-flex");
@@ -79,7 +79,7 @@
         let edit_btn = document.querySelectorAll(".edit");
         edit_btn.forEach(ele => {
             ele.addEventListener("click", ()=>{
-                let editId = ele.closest('.card').title;
+                let editId = ele.closest('.card').id;
                 let edit_pop_up = document.getElementById(`edit-pop-up-${editId}`);
                 edit_pop_up.classList.remove("d-none");
                 edit_pop_up.classList.add("d-flex");
