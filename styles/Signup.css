@@ -54,8 +54,8 @@ form{
     }
 }
 .active{
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--text-color) !important;
+    color: var(--second-color) !important;
 }
 #submit{
     color: var(--text-color);

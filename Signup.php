@@ -53,11 +53,13 @@
         let companyBtn = document.getElementById("company");
         console.log(userBtn);
         console.log(companyBtn);
-        userBtn.addEventListener("click", ()=>{
+        userBtn.addEventListener("click", (e)=>{
+            e.defaultPrevented()
             userBtn.classList.add("active");
             companyBtn.classList.remove("active");
         })
-        companyBtn.addEventListener("click", ()=>{
+        companyBtn.addEventListener("click", (e)=>{
+            e.preventDefault()
             userBtn.classList.remove("active");
             companyBtn.classList.add("active");
         })
