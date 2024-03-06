@@ -8,30 +8,18 @@
     <style>
         <?php 
             include "./styles/main.css";
-            include "./styles/Signup.css";
+            include "./styles/LoginIn.css";
         ?>
     </style>
 </head>
 <body>
     <form action="" method="post">
-        <h1>Get Started!</h1>
+        <h1>Welcome Back!</h1>
         <div class="choices">
             <button id="user" class="active ">User Account</button>
             <button id="company" >Company Account</button>
         </div>
         <div>
-            <div id="userName">
-                <fieldset>
-                    <legend>Full Name</legend>
-                    <input type="text" name="name" id="name" value="">
-                </fieldset>
-            </div>
-            <div id="orgName" class="hide">
-                <fieldset>
-                    <legend>Organization name</legend>
-                    <input type="text" name="Oname" id="Oname" value="">
-                </fieldset>
-            </div>
             <div>
                 <fieldset>
                     <legend>Email</legend>
@@ -44,15 +32,9 @@
                     <input type="password" name="password" id="password">
                 </fieldset>
             </div>
-            <div>
-                <fieldset>
-                    <legend>Confirm password</legend>
-                    <input type="password" name="Cpassword" id="Cpassword">
-                </fieldset>
-            </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
-                <input type="submit" name="submit" id="submit" value="Sign Up">
-                <p style="color: var(--text-color);">Already Have An Account? <a style="text-decoration: underline !important; color: var(--second-color) !important;" href="LoginIn.php">Sign In</a></p>
+                <input type="submit" name="submit" value="Login In" id="submit">
+                <p style="color: var(--text-color);">Don't Have An Account? <a style="text-decoration: underline !important; color: var(--second-color) !important;" href="Signup.php">Sign Up</a></p>
             </div>
         </div>
     </form>
