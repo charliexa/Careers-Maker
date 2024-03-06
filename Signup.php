@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signe up</title>
+    <title>Sign up</title>
     <style>
         <?php 
             include "./styles/Signup.css";

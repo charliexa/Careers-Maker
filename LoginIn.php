@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/Signup.css">
-    <title>Sign up</title>
+    <title>Login In</title>
     <style>
         <?php 
             include "./styles/main.css";
@@ -52,6 +52,8 @@
             inputs.forEach(ele => {
                 ele.value = "";
             });
+            let submit =document.getElementById("submit")
+            submit.value = "Login In"
             userBtn.classList.add("active");
             companyBtn.classList.remove("active");
             userForm.classList.remove("hide");
@@ -62,6 +64,8 @@
             inputs.forEach(ele => {
                 ele.value = "";
             });
+            let submit =document.getElementById("submit")
+            submit.value = "Login In"
             userBtn.classList.remove("active");
             companyBtn.classList.add("active");
             userForm.classList.add("hide");
