@@ -1,3 +1,28 @@
+<?php 
+
+    include('./config/db_connect.php');
+
+
+    // Login authentication
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $email = mysqli_real_escape_string($conn, $_POST["email"]);
+        $password = mysqli_real_escape_string($conn, $_POST["password"]);
+
+        $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) == 1) {
+            echo "Login successful!";
+            // You can set session variables or redirect to another page here
+        } else {
+            echo "Invalid username or password.";
+        }
+    }
+
+    mysqli_close($conn);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
