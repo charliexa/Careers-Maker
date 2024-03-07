@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     include('./config/db_connect.php');
 
@@ -37,7 +37,6 @@
             $sql = "UPDATE posts SET name='$name' WHERE id='$id'";
         } else {
             $sql = "UPDATE posts SET name='$name', body='$body' WHERE id='$id'";
-
         }
 
 
