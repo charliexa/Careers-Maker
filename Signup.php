@@ -115,10 +115,9 @@ if(isset($_POST['submit'])){
         window.onload = (e)=>{
             let form = document.getElementById("signupForm");
             form.onsubmit = (e)=>{
-                e.preventDefault();
                 let pass = document.getElementById("password");
                 let Cpass = document.getElementById("Cpassword");
-                if(pass.value !== pass.value){
+                if(Cpass.value !== pass.value){
                     window.alert("The passwords are not matching");
                 }
             }
