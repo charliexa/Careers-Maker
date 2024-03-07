@@ -1,3 +1,30 @@
+<?php
+include('./config/db_connect.php');
+
+if(isset($_POST['submit'])){
+    $NAME = $_POST['name'];
+    $ORGNAME = $_POST['Oname'];
+    $EMAIL = $_POST['email'];
+    $PASSWORD = $_POST['password'];
+    $CPASSWORD = $_POST['Cpassword'];
+
+    if($PASSWORD === $CPASSWORD){
+        if($ORGNAME === ''){
+            // Insert into users table
+            $upload = "INSERT INTO users (name, email, password) VALUES ('$NAME', '$EMAIL', '$PASSWORD')";
+            mysqli_query($conn, $upload);
+            header('Location: Home.php');
+            exit();
+        } else if ($NAME === ''){
+            // Insert into companies table
+            $upload = "INSERT INTO companies (orgname, email, password) VALUES ('$ORGNAME', '$EMAIL', '$PASSWORD')";
+            mysqli_query($conn, $upload);
+            header('Location: Home.php');
+            exit();
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
