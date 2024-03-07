@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $CPASSWORD = $_POST['Cpassword'];
 
     if($PASSWORD === $CPASSWORD){
-        if($ORGNAME === '') {
+        if($ORGNAME === ''){
             // Insert into users table
             $upload = "INSERT INTO users (name, email, password) VALUES ('$NAME', '$EMAIL', '$PASSWORD')";
             mysqli_query($conn, $upload);
@@ -23,7 +23,6 @@ if(isset($_POST['submit'])){
             exit();
         }
     }
-
 }
 ?>
 <!DOCTYPE html>
@@ -39,7 +38,7 @@ if(isset($_POST['submit'])){
     </style>
 </head>
 <body>
-    <form action="" method="post" id="signupForm">
+    <form action="" method="post">
         <h1>Get Started!</h1>
         <div class="choices">
             <button id="user" class="active">User Account</button>
@@ -49,35 +48,35 @@ if(isset($_POST['submit'])){
             <div id="userName">
                 <fieldset>
                     <legend>Full Name</legend>
-                    <input required type="text" name="name" id="name" value="">
+                    <input type="text" name="name" id="name" value="">
                 </fieldset>
             </div>
             <div id="orgName" class="hide">
                 <fieldset>
                     <legend>Organization name</legend>
-                    <input required type="text" name="Oname" id="Oname" value="">
+                    <input type="text" name="Oname" id="Oname" value="">
                 </fieldset>
             </div>
             <div>
                 <fieldset>
                     <legend>Email</legend>
-                    <input required type="email" name="email" id="email" value="">
+                    <input type="email" name="email" id="email" value="">
                 </fieldset>
             </div>
             <div>
                 <fieldset>
                     <legend>Password</legend>
-                    <input required type="password" name="password" id="password">
+                    <input type="password" name="password" id="password">
                 </fieldset>
             </div>
             <div>
                 <fieldset>
                     <legend>Confirm password</legend>
-                    <input required type="password" name="Cpassword" id="Cpassword">
+                    <input type="password" name="Cpassword" id="Cpassword">
                 </fieldset>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
-                <input required type="submit" name="submit" id="submit" value="Sign Up">
+                <input type="submit" name="submit" id="submit" value="Sign Up">
                 <p style="color: var(--text-color);">Already Have An Account? <a style="text-decoration: underline !important; color: var(--second-color) !important;" href="LoginIn.php">Sign In</a></p>
             </div>
         </div>
@@ -89,6 +88,8 @@ if(isset($_POST['submit'])){
         let userForm = document.getElementById("userName");
         let companyForm = document.getElementById("orgName");
         let inputs = document.querySelectorAll("input");
+        console.log(userBtn);
+        console.log(companyBtn);
         userBtn.addEventListener("click", (e)=>{
             e.preventDefault()
             inputs.forEach(ele => {
@@ -113,16 +114,6 @@ if(isset($_POST['submit'])){
             userForm.classList.add("hide");
             companyForm.classList.remove("hide");
         })
-        window.onload = (e)=>{
-            let form = document.getElementById("signupForm");
-            form.onsubmit = (e) => {
-                let pass = document.getElementById("password");
-                let Cpass = document.getElementById("Cpassword");
-                if(pass.value !== Cpass.value) {
-                    window.alert("The passwords are not matching");
-                }
-            }
-        }
         //End type signUp choices
     </script>
 
