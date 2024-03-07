@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $CPASSWORD = $_POST['Cpassword'];
 
     if($PASSWORD === $CPASSWORD){
-        if($ORGNAME === ''){
+        if($ORGNAME === '') {
             // Insert into users table
             $upload = "INSERT INTO users (name, email, password) VALUES ('$NAME', '$EMAIL', '$PASSWORD')";
             mysqli_query($conn, $upload);
@@ -23,6 +23,7 @@ if(isset($_POST['submit'])){
             exit();
         }
     }
+
 }
 ?>
 <!DOCTYPE html>
@@ -48,35 +49,35 @@ if(isset($_POST['submit'])){
             <div id="userName">
                 <fieldset>
                     <legend>Full Name</legend>
-                    <input type="text" name="name" id="name" value="">
+                    <input required type="text" name="name" id="name" value="">
                 </fieldset>
             </div>
             <div id="orgName" class="hide">
                 <fieldset>
                     <legend>Organization name</legend>
-                    <input type="text" name="Oname" id="Oname" value="">
+                    <input required type="text" name="Oname" id="Oname" value="">
                 </fieldset>
             </div>
             <div>
                 <fieldset>
                     <legend>Email</legend>
-                    <input type="email" name="email" id="email" value="">
+                    <input required type="email" name="email" id="email" value="">
                 </fieldset>
             </div>
             <div>
                 <fieldset>
                     <legend>Password</legend>
-                    <input type="password" name="password" id="password">
+                    <input required type="password" name="password" id="password">
                 </fieldset>
             </div>
             <div>
                 <fieldset>
                     <legend>Confirm password</legend>
-                    <input type="password" name="Cpassword" id="Cpassword">
+                    <input required type="password" name="Cpassword" id="Cpassword">
                 </fieldset>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
-                <input type="submit" name="submit" id="submit" value="Sign Up">
+                <input required type="submit" name="submit" id="submit" value="Sign Up">
                 <p style="color: var(--text-color);">Already Have An Account? <a style="text-decoration: underline !important; color: var(--second-color) !important;" href="LoginIn.php">Sign In</a></p>
             </div>
         </div>
@@ -114,11 +115,11 @@ if(isset($_POST['submit'])){
         })
         window.onload = (e)=>{
             let form = document.getElementById("signupForm");
-            form.onsubmit = (e)=>{
+            form.onsubmit = (e) => {
                 e.preventDefault();
                 let pass = document.getElementById("password");
                 let Cpass = document.getElementById("Cpassword");
-                if(pass.value !== pass.value){
+                if(pass.value !== Cpass.value) {
                     window.alert("The passwords are not matching");
                 }
             }
