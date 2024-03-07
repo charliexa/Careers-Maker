@@ -37,8 +37,5 @@
     </nav>
         <div class="prf fs-4" style="padding-left: 10px;" title="<?php echo substr($curPageName, 0, -4)?>">
             <a style="margin-right: 6px !important;"  href="Signup.php"><i class="fa-regular fa-user fs-4"></i>
-        <div class="prf fs-4" style="padding-left: 10px;" id="<?php echo substr($curPageName, 0, -4)?>">
-            <a style="margin-right: 6px !important;"  href="../Carrers/Signup.php"><i class="fa-regular fa-user fs-4"></i>
-            </a>
         </div>
     </header>
