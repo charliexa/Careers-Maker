@@ -2,6 +2,8 @@
 
     include('./config/db_connect.php');
 
+    session_start();
+
 
     // Login authentication
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,14 +16,24 @@
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) == 1) {
-                echo "Login successful!";
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION["Oemail"] = $row["email"];
+                $_SESSION["password"] = $row["password"];
+                $_SESSION["type"] = $row["type"];
                 header('Location: Home.php');
             } else {
                 echo "Invalid email or password.";
             }
         } else if (!empty($email) && empty($Oemail)) {
-            $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
-            $result = mysqli_query($conn, $sql);
+
+            $sqladmin = "SELECT * FROM admins WHERE email = '$email' AND password = '$password'";
+
+            if (mysqli_query($conn, $sqladmin)) {
+                $result = mysqli_query($conn, $sqladmin);
+            } else {
+                $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+                $result = mysqli_query($conn, $sql);
+            }
 
             if (mysqli_num_rows($result) == 1) {
                 echo "Login successful!";
@@ -29,6 +41,7 @@
             } else {
                 echo "Invalid email or password.";
             }
+
         }
 
     }
@@ -117,6 +130,5 @@
         })
         //End type signUp choices
     </script>
-
 </body>
 </html>
