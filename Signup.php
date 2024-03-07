@@ -34,7 +34,6 @@ if(isset($_POST['submit'])){
     <style>
         <?php 
             include "./styles/Signup.css";
-            include "./styles/main.css";
         ?>
     </style>
 </head>

@@ -120,6 +120,7 @@
                 </div>
                 <div style="width: fit-content !important;" class="fs-5"><div class="btnn "><i class="fa-regular fa-heart"></i>  Like</div></div>
             </div>
+
             <!-- Start Sure Pop up -->
             <div class="container sure" id="sure-<?php echo $post['id']; ?>">
                 <div class="top">
@@ -130,6 +131,7 @@
                     <a href="" class="bg-dark" style="color: white !important;">Cancel</a>
                 </div>
             </div>
+
             <!-- End Sure Pop up -->
 
             <!-- Start The Edit Post Pop Up -->
