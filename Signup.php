@@ -113,22 +113,14 @@ if(isset($_POST['submit'])){
             userForm.classList.add("hide");
             companyForm.classList.remove("hide");
         })
-        window.onload = (e)=>{
-            let form = document.getElementById("signupForm");
-            form.onsubmit = (e)=>{
-                let pass = document.getElementById("password");
-                let Cpass = document.getElementById("Cpassword");
-                if(Cpass.value !== pass.value){
-            form.onsubmit = (e) => {
-                let pass = document.getElementById("password");
-                let Cpass = document.getElementById("Cpassword");
-                if(pass.value !== Cpass.value) {
-                    window.alert("The passwords are not matching");
-                }
+        let form = document.getElementById("signupForm");
+        form.onsubmit = () => {
+            let pass = document.getElementById("password");
+            let Cpass = document.getElementById("Cpassword");
+            if(pass.value !== Cpass.value) {
+                window.alert("The passwords are not matching");
             }
         }
-    }
-}
         //End type signUp choices
     </script>
 
