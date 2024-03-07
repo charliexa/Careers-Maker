@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
     </style>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" id="signupForm">
         <h1>Get Started!</h1>
         <div class="choices">
             <button id="user" class="active">User Account</button>
@@ -88,8 +88,6 @@ if(isset($_POST['submit'])){
         let userForm = document.getElementById("userName");
         let companyForm = document.getElementById("orgName");
         let inputs = document.querySelectorAll("input");
-        console.log(userBtn);
-        console.log(companyBtn);
         userBtn.addEventListener("click", (e)=>{
             e.preventDefault()
             inputs.forEach(ele => {
@@ -114,6 +112,17 @@ if(isset($_POST['submit'])){
             userForm.classList.add("hide");
             companyForm.classList.remove("hide");
         })
+        window.onload = (e)=>{
+            let form = document.getElementById("signupForm");
+            form.onsubmit = (e)=>{
+                e.preventDefault();
+                let pass = document.getElementById("password");
+                let Cpass = document.getElementById("Cpassword");
+                if(pass.value !== pass.value){
+                    window.alert("The passwords are not matching");
+                }
+            }
+        }
         //End type signUp choices
     </script>
 
