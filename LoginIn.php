@@ -15,7 +15,7 @@
 
             if (mysqli_num_rows($result) == 1) {
                 echo "Login successful!";
-                // header('Location: Home.php');
+                header('Location: Home.php');
             } else {
                 echo "Invalid email or password.";
             }
@@ -25,13 +25,12 @@
 
             if (mysqli_num_rows($result) == 1) {
                 echo "Login successful!";
-                // header('Location: Home.php');
+                header('Location: Home.php');
             } else {
                 echo "Invalid email or password.";
             }
         }
 
-        
     }
 
     mysqli_close($conn);
