@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/Signup.css">
     <title>Login In</title>
     <style>
-        <?php 
+        <?php
             include "./styles/main.css";
             include "./styles/LoginIn.css";
         ?>

@@ -3,11 +3,11 @@
     <div class="parent d-flex flex-row w-100">
         <div class="cont d-flex flex-column align-items-center w-100">
             <label for="Name" class="fs-4">Edit The Name Here: </label>
-            <input type="text" class="w-75 " name="edit-name" placeholder="Edit Your Name">
+            <input type="text" class="w-75 " value="<?php echo htmlspecialchars($post["name"])?>" name="edit-name" placeholder="Edit Your Name">
         </div>
     </div>
-    <div class="the-post">
-        <textarea name="edit-body" id="post" cols="79" rows="5" placeholder="Edit The Post Here!" class="w-100 "></textarea>
+    <div class="the-post w-75 ">
+        <textarea name="edit-body" id="post" cols="79" rows="5" placeholder="Edit The Post Here!" class="w-100" ><?php echo htmlspecialchars($post["body"])?></textarea>
     </div>
     <div class="text-center">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($post["id"])?>">

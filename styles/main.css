@@ -44,7 +44,7 @@ i {
     display: flex;
 }
 .active::after {
-    content: " " attr(title) "";
+    content: " " attr(id) "";
     text-transform: capitalize !important;
 }
 .active  a i {

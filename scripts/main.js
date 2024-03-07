@@ -5,23 +5,25 @@
     let profile = document.querySelector(".prf");
     let icon = document.querySelector(".prf a i");
 
-    if (home.title == "home") {
+    console.log(home.id == "Home")
+
+    if (home.id == "Home") {
         jobs.classList.remove("active")
         contact_us.classList.remove("active")
         profile.classList.remove("active")
         home.classList.add("active")
-    } else if (home.title == "jobs") {
+    } else if (home.id == "jobs") {
         home.classList.remove("active")
         contact_us.classList.remove("active")
         profile.classList.remove("active")
         jobs.classList.add("active")
-    } else if (home.title == "contact-us") {
+    } else if (home.id == "contact-us") {
         jobs.classList.remove("active")
         home.classList.remove("active")
         profile.classList.remove("active")
         contact_us.classList.add("active")
     }
-    else if (home.title == "profile") {
+    else if (home.id == "profile") {
         jobs.classList.remove("active")
         home.classList.remove("active")
         contact_us.classList.remove("active")
@@ -65,17 +67,6 @@
                 });
             };
         });
-
-        // let del_btn = document.querySelectorAll(".delete");
-
-        // del_btn.forEach(ele => {
-        //     ele.addEventListener("click", () => {
-        //         let sure = document.getElementById("sure");
-        //         sure.style.display = "block";
-        //         overlay.classList.add("d-flex");
-        //         document.body.classList.add("blur");
-        //     });
-        // });
 
         let del_btn = document.querySelectorAll(".delete");
 
