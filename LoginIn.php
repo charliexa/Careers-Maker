@@ -6,17 +6,32 @@
     // Login authentication
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = mysqli_real_escape_string($conn, $_POST["email"]);
+        $Oemail = mysqli_real_escape_string($conn, $_POST["Oemail"]);
         $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
-        $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
-        $result = mysqli_query($conn, $sql);
+        if (empty($email) && !empty($Oemail)) {
+            $sql = "SELECT * FROM companies WHERE email = '$Oemail' AND password = '$password'";
+            $result = mysqli_query($conn, $sql);
 
-        if (mysqli_num_rows($result) == 1) {
-            echo "Login successful!";
-            // You can set session variables or redirect to another page here
-        } else {
-            echo "Invalid username or password.";
+            if (mysqli_num_rows($result) == 1) {
+                echo "Login successful!";
+                // header('Location: Home.php');
+            } else {
+                echo "Invalid email or password.";
+            }
+        } else if (!empty($email) && empty($Oemail)) {
+            $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) == 1) {
+                echo "Login successful!";
+                // header('Location: Home.php');
+            } else {
+                echo "Invalid email or password.";
+            }
         }
+
+        
     }
 
     mysqli_close($conn);
@@ -40,14 +55,20 @@
     <form action="" method="post">
         <h1>Welcome Back!</h1>
         <div class="choices">
-            <button id="user" class="active ">User Account</button>
+            <button id="user" class="active">User Account</button>
             <button id="company" >Company Account</button>
         </div>
         <div>
-            <div>
+        <div id="userName">
                 <fieldset>
                     <legend>Email</legend>
-                    <input type="email" name="email" id="email" value="">
+                    <input type="text" name="email" id="name" value="">
+                </fieldset>
+            </div>
+            <div id="orgName" class="hide">
+                <fieldset>
+                    <legend>Email</legend>
+                    <input type="text" name="Oemail" id="Oname" value="">
                 </fieldset>
             </div>
             <div>
