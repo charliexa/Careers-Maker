@@ -113,7 +113,7 @@ if(isset($_POST['submit'])){
             companyBtn.classList.add("active");
             userForm.classList.add("hide");
             companyForm.classList.remove("hide");
-        }) 
+        })
         //End type signUp choices
     </script>
 
