@@ -13,7 +13,7 @@
 
         if (mysqli_num_rows($result) == 1) {
             echo "Login successful!";
-            // You can set session variables or redirect to another page here
+            header('Location: Home.php');
         } else {
             echo "Invalid username or password.";
         }
