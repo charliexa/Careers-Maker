@@ -37,6 +37,7 @@
             $sql = "UPDATE posts SET name='$name' WHERE id='$id'";
         } else {
             $sql = "UPDATE posts SET name='$name', body='$body' WHERE id='$id'";
+
         }
 
 
@@ -59,10 +60,9 @@
     <!-- Start The Add Post Pop Up -->
         <?php require "./components/PopUp.php"; ?>
     <!-- End The Add Post Pop Up -->
-    
 
+    <?php require "./components/header.php"; ?>
     <div class="con" style="position: static;">
-        <?php require "./components/header.php"; ?>
 
         <div class="section container row-gap-3 d-flex flex-column mb-5 ">
             <div class="container d-flex justify-content-between ">

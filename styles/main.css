@@ -41,6 +41,7 @@ i {
     padding: 2px 7px;
     color: black;
     background-color: white;
+    display: flex;
 }
 .active::after {
     content: " " attr(title) "";
@@ -141,4 +142,17 @@ i {
 }
 body.blur {
     overflow: hidden;
+}
+.link-3 {
+    position: relative;
+    margin-right: 10px;
+}
+.link-3::before {
+    content: "";
+    border-right: 2px solid #15222c;
+    position: absolute;
+    top: 0px;
+    width: 30px;
+    height: 40px;
+    right: -13px;
 }

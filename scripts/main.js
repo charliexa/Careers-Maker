@@ -2,18 +2,32 @@
     let home = document.querySelector(".link-1");
     let jobs = document.querySelector(".link-2");
     let contact_us = document.querySelector(".link-3");
+    let profile = document.querySelector(".prf");
+    let icon = document.querySelector(".prf a i");
+
     if (home.title == "home") {
         jobs.classList.remove("active")
         contact_us.classList.remove("active")
+        profile.classList.remove("active")
         home.classList.add("active")
     } else if (home.title == "jobs") {
         home.classList.remove("active")
         contact_us.classList.remove("active")
+        profile.classList.remove("active")
         jobs.classList.add("active")
     } else if (home.title == "contact-us") {
         jobs.classList.remove("active")
         home.classList.remove("active")
+        profile.classList.remove("active")
         contact_us.classList.add("active")
+    }
+    else if (home.title == "profile") {
+        jobs.classList.remove("active")
+        home.classList.remove("active")
+        contact_us.classList.remove("active")
+        icon.classList.remove("fa-regular")
+        icon.classList.add("fa-solid")
+        profile.classList.add("active")
     }
     // End header Name Transition
     // Start Like Button
