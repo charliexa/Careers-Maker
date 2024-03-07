@@ -7,7 +7,6 @@
     <title>Login In</title>
     <style>
         <?php
-            include "./styles/main.css";
             include "./styles/LoginIn.css";
         ?>
     </style>
