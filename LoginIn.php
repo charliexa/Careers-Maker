@@ -78,27 +78,25 @@
         </div>
         <div>
         <div id="userName">
-                <fieldset class="input-error">
+                <fieldset>
                     <legend>Email</legend>
                     <input oncfo type="text" name="email" id="email" value="" >
                 </fieldset>
-                <p class="error hide"><?php echo htmlspecialchars($errors["email"]) ?></p>
-                <p class="error"><?php echo "ss" ?></p>
+                <p class="error hide"></p>
             </div>
             <div id="orgName" class="hide">
                 <fieldset>
                     <legend>Email</legend>
                     <input type="text" name="Oemail" id="Oemail" value="">
                 </fieldset>
-                <p class="error hide"><?php echo htmlspecialchars($errors["email"]) ?></p>
-                <p class="" style="display: none;"><?php echo htmlspecialchars($error["email"]) ?></p>
+                <p class="error hide"></p>
             </div>
             <div>
-                <fieldset class="input-error">
+                <fieldset>
                     <legend>Password</legend>
                     <input type="password" name="password" id="password">
                 </fieldset>
-                <p class="error2" style="display: none;" ><?php echo "ss" ?></p>
+                <p class="error2 hide"></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" value="Login In" id="submit">
@@ -207,8 +205,8 @@
             error[0].innerHTML = "wrong Email or Password";
             error[1].innerHTML = "wrong Email or Password";
             error2.innerHTML = "wrong Email or Password";
-            password.classList.add('input-error');
-            email.classList.add('input-error');
+            password.parentElement.classList.add('input-error');
+            email.parentElement.classList.add('input-error');
         }
         ///////////////
     </script>
