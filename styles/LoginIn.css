@@ -36,7 +36,6 @@ form{
         input{
             border: none;
             background-color: transparent;
-            height: 50%;
             font-size: 20px;
             color: var(--text-color);
             width: 100%;

@@ -3,15 +3,14 @@
     include('./config/db_connect.php');
 
     session_start();
-
+    $is_valide = '';
     $errors = ["email" => "Write Email Is Not Valid", "password" => ""];
-
     // Login authentication
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = mysqli_real_escape_string($conn, $_POST["email"]);
         $Oemail = mysqli_real_escape_string($conn, $_POST["Oemail"]);
         $password = mysqli_real_escape_string($conn, $_POST["password"]);
-
+        
         if (empty($email) && !empty($Oemail)) {
             $sql = "SELECT * FROM companies WHERE email = '$Oemail' AND password = '$password'";
             $result = mysqli_query($conn, $sql);
@@ -23,7 +22,7 @@
                 $_SESSION["type"] = $row["type"];
                 header('Location: Home.php');
             } else {
-                echo "Invalid email or password.";
+                $is_valide = 'no';
             }
         } else if (!empty($email) && empty($Oemail)) {
 
@@ -37,10 +36,13 @@
             }
 
             if (mysqli_num_rows($result) == 1) {
-                echo "Login successful!";
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION["email"] = $row["email"];
+                $_SESSION["password"] = $row["password"];
+                $_SESSION["type"] = $row["type"];
                 header('Location: Home.php');
             } else {
-                echo "Invalid email or password.";
+                $is_valide = 'no';
             }
 
         }
@@ -65,7 +67,7 @@
     </style>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" id="form">
         <h1>Welcome Back!</h1>
         <div class="choices">
             <button id="user" class="active">User Account</button>
@@ -75,15 +77,16 @@
         <div id="userName">
                 <fieldset>
                     <legend>Email</legend>
-                    <input oncfo type="text" name="email" id="name" value="" >
+                    <input oncfo type="text" name="email" id="email" value="" >
                 </fieldset>
-                <p class="error hide"><?php echo "ss" ?></p>
+                <p class="error hide"><?php echo htmlspecialchars($errors["email"]) ?></p>
             </div>
             <div id="orgName" class="hide">
                 <fieldset>
                     <legend>Email</legend>
-                    <input type="text" name="Oemail" id="Oname" value="">
+                    <input type="text" name="Oemail" id="Oemail" value="">
                 </fieldset>
+                <p class="error hide"><?php echo htmlspecialchars($errors["email"]) ?></p>
             </div>
             <div>
                 <fieldset>
@@ -111,6 +114,10 @@
             e.preventDefault()
             inputs.forEach(ele => {
                 ele.value = "";
+                eleParent = ele.parentElement;
+                eleParent.classList.remove('input-error');
+                let error = document.querySelectorAll(".error");
+                error[0].classList.add('hide');
             });
             let submit =document.getElementById("submit")
             submit.value = "Login In"
@@ -123,6 +130,10 @@
             e.preventDefault()
             inputs.forEach(ele => {
                 ele.value = "";
+                eleParent = ele.parentElement;
+                eleParent.classList.remove('input-error');
+                let error = document.querySelectorAll(".error");
+                error[1].classList.add('hide');
             });
             let submit =document.getElementById("submit")
             submit.value = "Login In"
@@ -133,26 +144,68 @@
         })
         //End type signUp choices
         // Start Focus Out Email is valid
-        let error = document.querySelector("error");
-        let error2 = document.querySelector("error2");
+        let error = document.querySelectorAll(".error");
+        let error2 = document.querySelector(".error2");
         let email = document.getElementById('email');
+        let password = document.getElementById('password');
         email.addEventListener("focusout", ()=>{
             if(email.value === ""){
                 eparent = email.parentElement;
                 eparent.classList.add('input-error');
+                error[0].classList.remove('hide');
+                
             }else{
-                email.classList.remove('input-error');
+                eparent = email.parentElement;
+                eparent.classList.remove('input-error');
+                error[0].classList.add('hide');
+                email.style.color = "#b0b9d8";
+            }
+            if(!isValidEmail(email.value)){
+                email.style.color = "red";
+                eparent.classList.add('input-error');
+                error[0].classList.remove('hide');
+                error[0].innerHTML = 'Email format is not valid';
             }
         })
         let Oemail = document.getElementById('Oemail');
         Oemail.addEventListener("focusout", ()=>{
-        if(Oemail.value === ""){
-            Oemail.classList.add('input-error');
-        }else{
-            Oemail.classList.remove('input-error');
-        }
+            if(Oemail.value === ""){
+                Oeparent = Oemail.parentElement;
+                Oeparent.classList.add('input-error');
+                error[1].classList.remove('hide');
+            }else{
+                Oeparent = email.parentElement;
+                Oeparent.classList.remove('input-error');
+                error[1].classList.add('hide');
+                email.style.color = "#b0b9d8";  
+            }
+            if(!isValidEmail(email.value)){
+                email.style.color = "red";
+                eparent.classList.add('input-error');
+                error[1].classList.remove('hide');
+                error[1].innerHTML = 'Email format is not valid';
+            }
         })
         // End Focus Out Email is valid
+        // regex email
+        function isValidEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailPattern.test(email);
+        }
+        // regex email
+        ///////////////
+        let valid = "<?php echo $is_valide?>";
+        if(valid !== ""){
+            error[0].classList.remove('hide');
+            error[1].classList.remove('hide');
+            error2.classList.remove('hide');
+            error[0].innerHTML = "wrong Email or Password";
+            error[1].innerHTML = "wrong Email or Password";
+            error2.innerHTML = "wrong Email or Password";
+            password.classList.add('input-error');
+            email.classList.add('input-error');
+        }
+        ///////////////
     </script>
 </body>
 </html>
