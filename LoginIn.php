@@ -5,6 +5,9 @@
     session_start();
     $is_valide = '';
     $errors = ["email" => "Write Email Is Not Valid", "password" => ""];
+
+    $errors = ["email" => "This Email Is Not Valid!", "password" => ""];
+
     // Login authentication
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = mysqli_real_escape_string($conn, $_POST["email"]);
@@ -75,11 +78,12 @@
         </div>
         <div>
         <div id="userName">
-                <fieldset>
+                <fieldset class="input-error">
                     <legend>Email</legend>
                     <input oncfo type="text" name="email" id="email" value="" >
                 </fieldset>
                 <p class="error hide"><?php echo htmlspecialchars($errors["email"]) ?></p>
+                <p class="error"><?php echo "ss" ?></p>
             </div>
             <div id="orgName" class="hide">
                 <fieldset>
@@ -87,13 +91,14 @@
                     <input type="text" name="Oemail" id="Oemail" value="">
                 </fieldset>
                 <p class="error hide"><?php echo htmlspecialchars($errors["email"]) ?></p>
+                <p class="" style="display: none;"><?php echo htmlspecialchars($error["email"]) ?></p>
             </div>
             <div>
-                <fieldset>
+                <fieldset class="input-error">
                     <legend>Password</legend>
                     <input type="password" name="password" id="password">
                 </fieldset>
-                <p class="error2 hide" style="display: none;" ><?php echo "ss" ?></p>
+                <p class="error2" style="display: none;" ><?php echo "ss" ?></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" value="Login In" id="submit">

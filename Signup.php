@@ -1,12 +1,14 @@
 <?php
-include('./config/db_connect.php');
+    include('./config/db_connect.php');
 
-if(isset($_POST['submit'])){
-    $NAME = $_POST['name'];
-    $ORGNAME = $_POST['Oname'];
-    $EMAIL = $_POST['email'];
-    $PASSWORD = $_POST['password'];
-    $CPASSWORD = $_POST['Cpassword'];
+    $errors = ["name" => "This Name is Not Valid","email" => "This Email Is Not Valid!", "password" => ""];
+
+    if(isset($_POST['submit'])){
+        $NAME = $_POST['name'];
+        $ORGNAME = $_POST['Oname'];
+        $EMAIL = $_POST['email'];
+        $PASSWORD = $_POST['password'];
+        $CPASSWORD = $_POST['Cpassword'];
 
     if($PASSWORD === $CPASSWORD){
         if($ORGNAME === ''){
@@ -46,34 +48,39 @@ if(isset($_POST['submit'])){
         </div>
         <div>
             <div id="userName">
-                <fieldset>
+                <fieldset class="input-error">
                     <legend>Full Name</legend>
                     <input type="text" name="name" id="name" value="">
                 </fieldset>
+                <p class="error" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div id="orgName" class="hide">
-                <fieldset>
+                <fieldset class="input-error">
                     <legend>Organization name</legend>
                     <input type="text" name="Oname" id="Oname" value="">
                 </fieldset>
+                <p class="error" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div>
-                <fieldset>
+                <fieldset class="input-error">
                     <legend>Email</legend>
                     <input type="email" name="email" id="email" value="">
                 </fieldset>
+                <p class="error" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div>
-                <fieldset>
+                <fieldset class="input-error">
                     <legend>Password</legend>
                     <input type="password" name="password" id="password">
                 </fieldset>
+                <p class="error" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div>
-                <fieldset>
+                <fieldset class="input-error">
                     <legend>Confirm password</legend>
                     <input type="password" name="Cpassword" id="Cpassword">
                 </fieldset>
+                <p class="error2" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" id="submit" value="Sign Up">
