@@ -106,3 +106,19 @@ form{
 .focusout{
     border: 1px solid red;
 }
+.error, .error2 {
+    margin: 0;
+    margin-top: 0px;
+    color: red;
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: -15px;
+    display: block !important;
+}
+.error2 {
+    margin-bottom: 10px !important;
+}
+.input-error {
+    margin-bottom: 0px;
+    border-color: red;
+}
