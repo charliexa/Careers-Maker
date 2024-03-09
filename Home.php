@@ -2,6 +2,9 @@
 
     include('./config/db_connect.php');
 
+    session_start();
+
+
     // Get All posts
     $sql = 'SELECT id, name, body, Created_at FROM posts ORDER BY -Created_at';
 
@@ -50,9 +53,6 @@
 
 }
 
-    session_start();
-
-    print_r($_SESSION);
 
 ?>
 
