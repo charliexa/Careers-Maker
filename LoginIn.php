@@ -4,7 +4,7 @@
 
     session_start();
 
-    $errors = ["email" => "Write Email Is Not Valid", "password" => ""];
+    $errors = ["email" => "This Email Is Not Valid!", "password" => ""];
 
     // Login authentication
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -73,24 +73,25 @@
         </div>
         <div>
         <div id="userName">
-                <fieldset class="input-error">
+                <fieldset class="">
                     <legend>Email</legend>
                     <input oncfo type="text" name="email" id="name" value="" >
                 </fieldset>
-                <p class="error"><?php echo "ss" ?></p>
+                <p class="" style="display: none;"><?php echo htmlspecialchars($error["email"]) ?></p>
             </div>
             <div id="orgName" class="hide">
                 <fieldset>
                     <legend>Email</legend>
                     <input type="text" name="Oemail" id="Oname" value="">
                 </fieldset>
+                <p class="" style="display: none;"><?php echo htmlspecialchars($error["email"]) ?></p>
             </div>
             <div>
-                <fieldset class="input-error">
+                <fieldset class="">
                     <legend>Password</legend>
                     <input type="password" name="password" id="password">
                 </fieldset>
-                <p class="error2" style="display: none;" ><?php echo "ss" ?></p>
+                <p class="" style="display: none;" ><?php echo htmlspecialchars($error["password"]) ?></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" value="Login In" id="submit">
