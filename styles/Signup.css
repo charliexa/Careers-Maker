@@ -119,3 +119,6 @@ form{
     margin-bottom: 0px;
     border-color: red;
 }
+.focusout{
+    border: 1px solid red;
+}

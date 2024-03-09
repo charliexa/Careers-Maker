@@ -73,11 +73,11 @@
         </div>
         <div>
         <div id="userName">
-                <fieldset class="">
+                <fieldset class="input-error">
                     <legend>Email</legend>
                     <input oncfo type="text" name="email" id="name" value="" >
                 </fieldset>
-                <p class="" style="display: none;"><?php echo htmlspecialchars($error["email"]) ?></p>
+                <p class="error"><?php echo "ss" ?></p>
             </div>
             <div id="orgName" class="hide">
                 <fieldset>
@@ -87,11 +87,11 @@
                 <p class="" style="display: none;"><?php echo htmlspecialchars($error["email"]) ?></p>
             </div>
             <div>
-                <fieldset class="">
+                <fieldset class="input-error">
                     <legend>Password</legend>
                     <input type="password" name="password" id="password">
                 </fieldset>
-                <p class="" style="display: none;" ><?php echo htmlspecialchars($error["password"]) ?></p>
+                <p class="error2" style="display: none;" ><?php echo "ss" ?></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" value="Login In" id="submit">
@@ -134,7 +134,25 @@
         })
         //End type signUp choices
         // Start Focus Out Email is valid
-
+        let error = document.querySelector("error");
+        let error2 = document.querySelector("error2");
+        let email = document.getElementById('email');
+        email.addEventListener("focusout", ()=>{
+            if(email.value === ""){
+                eparent = email.parentElement;
+                eparent.classList.add('input-error');
+            }else{
+                email.classList.remove('input-error');
+            }
+        })
+        let Oemail = document.getElementById('Oemail');
+        Oemail.addEventListener("focusout", ()=>{
+        if(Oemail.value === ""){
+            Oemail.classList.add('input-error');
+        }else{
+            Oemail.classList.remove('input-error');
+        }
+        })
         // End Focus Out Email is valid
     </script>
 </body>

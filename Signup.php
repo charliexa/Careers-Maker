@@ -121,6 +121,21 @@
             userForm.classList.add("hide");
             companyForm.classList.remove("hide");
         })
+        let Cpassword = document.getElementById('Cpassword');
+        Cpassword.addEventListener("focusout", ()=>{
+            let password = document.getElementById('password');
+            if(Cpassword.value !== password.value){
+                par1 = password.parentElement;
+                par2 = Cpassword.parentElement;
+                par1.classList.add('focusout');
+                par2.classList.add('focusout');
+            }else{
+                par1 = password.parentElement;
+                par2 = Cpassword.parentElement;
+                par1.classList.remove('focusout');
+                par2.classList.remove('focusout');
+            }
+        })
         //End type signUp choices
     </script>
 
