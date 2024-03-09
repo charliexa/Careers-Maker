@@ -4,6 +4,7 @@
 
     session_start();
 
+    $errors = ["email" => "Write Email Is Not Valid", "password" => ""];
 
     // Login authentication
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -72,10 +73,11 @@
         </div>
         <div>
         <div id="userName">
-                <fieldset>
+                <fieldset class="input-error">
                     <legend>Email</legend>
-                    <input type="text" name="email" id="name" value="">
+                    <input oncfo type="text" name="email" id="name" value="" >
                 </fieldset>
+                <p class="error"><?php echo "ss" ?></p>
             </div>
             <div id="orgName" class="hide">
                 <fieldset>
@@ -84,10 +86,11 @@
                 </fieldset>
             </div>
             <div>
-                <fieldset>
+                <fieldset class="input-error">
                     <legend>Password</legend>
                     <input type="password" name="password" id="password">
                 </fieldset>
+                <p class="error2" style="display: none;" ><?php echo "ss" ?></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" value="Login In" id="submit">
@@ -129,6 +132,9 @@
             companyForm.classList.remove("hide");
         })
         //End type signUp choices
+        // Start Focus Out Email is valid
+
+        // End Focus Out Email is valid
     </script>
 </body>
 </html>
