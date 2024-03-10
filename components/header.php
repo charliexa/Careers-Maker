@@ -16,27 +16,28 @@
 </head>
 <body>
     <header style="height: fit-content !important;" class="container py-2 d-flex  flex-row fs-4">
-    <nav class="container d-flex justify-content-between align-items-center flex-row gap-5 fs-4">
-        <div class="icon text-start">Carrers</div>
-        <ul style="margin-bottom: 0px !important;" class="list-unstyled d-flex flex-row gap-5">
-            <li id="<?php echo substr($curPageName, 0, -4)?>" class="link-1 active">
-                <a style="margin-right: 6px !important;" href="Home.php">
-                    <i class="fa-solid fa-house"></i>
-                </a>
-            </li>
-            <li id="<?php echo substr($curPageName, 0, -4)?>" class="link-2">
-                <a style="margin-right: 6px !important;" href="jobs.php">
-                    <i class="fa-solid fa-briefcase"></i>
-                </a>
-            </li>
-            <li id="<?php echo substr($curPageName, 0, -4)?>" class="link-3">
-                    <a style="margin-right: 6px !important;" href="contact-us.php"><i class="fa-solid fa-square-phone"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-        <div class="prf fs-4" style="padding-left: 10px;" id="<?php echo substr($curPageName, 0, -4)?>">
-            <a style="margin-right: 6px !important;" href="Signup.php"><i class="fa-regular fa-user fs-4"></i>
+        <nav class="container d-flex justify-content-between align-items-center flex-row gap-5 fs-4">
+            <div class="icon text-start">Carrers</div>
+            <ul style="margin-bottom: 0px !important;" class="list-unstyled d-flex flex-row gap-5">
+                <li id="<?php echo substr($curPageName, 0, -4)?>" class="link-1 active">
+                    <a style="margin-right: 6px !important;" href="Home.php">
+                        <i class="fa-solid fa-house"></i>
+                    </a>
+                </li>
+                <li id="<?php echo substr($curPageName, 0, -4)?>" class="link-2">
+                    <a style="margin-right: 6px !important;" href="jobs.php">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </a>
+                </li>
+                <li id="<?php echo substr($curPageName, 0, -4)?>" class="link-3">
+                        <a style="margin-right: 6px !important;" href="contact-us.php"><i class="fa-solid fa-square-phone"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="prf-cont fs-4" style="padding-left: 10px;" id="<?php echo substr($curPageName, 0, -4)?>">
+            <a style="margin-right: 6px !important;" href="Signup.php">
+                <i class="fa-regular fa-user fs-4"></i>
             </a>
         </div>
     </header>

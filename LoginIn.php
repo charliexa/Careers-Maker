@@ -17,7 +17,7 @@
         $email = mysqli_real_escape_string($conn, $_POST["email"]);
         $Oemail = mysqli_real_escape_string($conn, $_POST["Oemail"]);
         $password = mysqli_real_escape_string($conn, $_POST["password"]);
-        
+
         if (empty($email) && !empty($Oemail)) {
             $sql = "SELECT * FROM companies WHERE email = '$Oemail' AND password = '$password'";
             $result = mysqli_query($conn, $sql);
@@ -25,7 +25,7 @@
             if (mysqli_num_rows($result) == 1) {
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION["id"] = $row["id"];
-                $_SESSION["Oemail"] = $row["email"];
+                $_SESSION["email"] = $row["email"];
                 $_SESSION["password"] = $row["password"];
                 $_SESSION["type"] = $row["type"];
                 header('Location: Home.php');
@@ -42,7 +42,7 @@
 
             if (mysqli_num_rows($resul) == 1) {
                 // Store Admin's Data in A session
-                $row = mysqli_fetch_assoc($result);
+                $row = mysqli_fetch_assoc($resul);
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["email"] = $row["email"];
                 $_SESSION["password"] = $row["password"];
@@ -210,9 +210,10 @@
         }
         // regex email
         ///////////////
+        let valid = "<?php echo $is_valide?>";
         function IsValidInfos() {
-            let valid = "<?php echo $is_valide?>";
             if(valid !== ""){
+
                 error[0].classList.remove('hide');
                 error[1].classList.remove('hide');
                 error2.classList.remove('hide');
