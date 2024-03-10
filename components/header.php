@@ -1,6 +1,14 @@
 <?php
 
+    session_start();
+
     $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+
+    if (isset($_SESSION)) {
+        $name = $_SESSION["name"];
+    } else {
+        $name = "";
+    }
 
 ?>
 
@@ -35,9 +43,14 @@
                 </li>
             </ul>
         </nav>
-        <div class="prf-cont fs-4" style="padding-left: 10px;" id="<?php echo substr($curPageName, 0, -4)?>">
-            <a style="margin-right: 6px !important;" href="Signup.php">
-                <i class="fa-regular fa-user fs-4"></i>
+        <div class="prf fs-4" style="padding-left: 10px;" id="<?php echo substr($curPageName, 0, -4)?>">
+            <a style="margin-right: 6px !important; cursor: pointer;" onclick="Drop()">
+                <i class="fa-regular fa-user fs-4"></i><p style="user-select: none;"><?php echo htmlspecialchars($name) ?></p>
+                <i class="fa-solid fa-caret-down"></i>
             </a>
+            <div class="drop-menu d-none">
+                <div class="bg-first border-bottom border-secondary" style="user-select: none;cursor: pointer;">Profile</div>
+                <div class="bg-first" style="user-select: none;cursor: pointer;">Log Out</div>
+            </div>
         </div>
     </header>

@@ -25,9 +25,11 @@
             if (mysqli_num_rows($result) == 1) {
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION["id"] = $row["id"];
+                $_SESSION["name"] = $row["orgname"];
                 $_SESSION["email"] = $row["email"];
                 $_SESSION["password"] = $row["password"];
                 $_SESSION["type"] = $row["type"];
+                $_SESSION["created_at"] = $row["created_at"];
                 header('Location: Home.php');
             } else {
                 $is_valide = 'no';

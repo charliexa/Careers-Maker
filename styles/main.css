@@ -156,6 +156,43 @@ body.blur {
     height: 40px;
     right: -13px;
 }
-.prf-cont {
-    
+.prf {
+    background-color: var(--text-color);
+    color: var(--bg-color) !important;
+    padding-right: 10px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+.prf > a:nth-child(1) {
+    color: var(--bg-color) !important;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+.prf > a:nth-child(1) > p:nth-child(2) {
+    margin: 0;
+    white-space: nowrap;
+    text-transform: capitalize;
+}
+.drop-menu {
+    position: absolute;
+    right: 7px;
+    bottom: -110px;
+    border-radius: 0px 0px 15px 15px ;
+    background-color: var(--text-color);
+    color: var(--bg-color) !important;
+    padding: 10px 10px;
+    z-index: 10000;
+    width: 185px;
+}
+.drop-menu div {
+    padding: 5px 10px !important;
+    font-size: 25px;
 }

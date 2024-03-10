@@ -5,8 +5,6 @@
     let profile = document.querySelector(".prf");
     let icon = document.querySelector(".prf a i");
 
-    console.log(home.id == "Home")
-
     if (home.id == "Home") {
         jobs.classList.remove("active")
         contact_us.classList.remove("active")
@@ -117,3 +115,18 @@
         }
     });
     // End Pop Up
+
+    // Start Drop Down Menu
+    function Drop() {
+        let boton = document.querySelector("prf a")
+        let prf = document.querySelector(".prf")
+        let drop = document.querySelector(".drop-menu")
+        drop.classList.toggle("d-none")
+        document.addEventListener("click", function(e) {
+            const isClickInsideDrop = prf.contains(e.target);
+            if (!isClickInsideDrop) {
+                drop.classList.add("d-none");
+            }
+        })
+    }
+    // End Drop Down Menu
