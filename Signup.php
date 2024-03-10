@@ -1,7 +1,13 @@
 <?php
     include('./config/db_connect.php');
 
-    $errors = ["name" => "This Name is Not Valid","email" => "This Email Is Not Valid!", "password" => ""];
+    session_start();
+
+    if (isset($_SESSION['type'])) {
+        header('Location: Home.php');
+    }
+
+    $errors = ["name" => "This Name is Not Valid","email" => "This Email Is Not Valid!", "password" => "The Passwords Does Not Match"];
 
     if(isset($_POST['submit'])){
         $NAME = $_POST['name'];
@@ -48,43 +54,43 @@
         </div>
         <div>
             <div id="userName">
-                <fieldset class="input-error">
+                <fieldset class="field1">
                     <legend>Full Name</legend>
                     <input type="text" name="name" id="name" value="">
                 </fieldset>
-                <p class="error" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div id="orgName" class="hide">
-                <fieldset class="input-error">
+                <fieldset class="field2">
                     <legend>Organization name</legend>
                     <input type="text" name="Oname" id="Oname" value="">
                 </fieldset>
-                <p class="error" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div>
-                <fieldset class="input-error">
+                <fieldset class="field3">
                     <legend>Email</legend>
-                    <input type="email" name="email" id="email" value="">
+                    <input type="email" name="email" id="email" value="" onfocusout="isValidEmail(this.value)">
                 </fieldset>
-                <p class="error" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div>
-                <fieldset class="input-error">
+                <fieldset class="field4">
                     <legend>Password</legend>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" onfocusout="isValidPass(this.value)">
                 </fieldset>
-                <p class="error" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"><?php echo $errors["password"] ?></p>
             </div>
             <div>
-                <fieldset class="input-error">
+                <fieldset class="field5">
                     <legend>Confirm password</legend>
                     <input type="password" name="Cpassword" id="Cpassword">
                 </fieldset>
-                <p class="error2" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"><?php echo $errors["password"] ?></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" id="submit" value="Sign Up">
-                <p style="color: var(--text-color);">Already Have An Account? <a style="text-decoration: underline !important; color: var(--second-color) !important;" href="LoginIn.php">Sign In</a></p>
+                <p style="color: var(--text-color);">Already Have An Account? <a style="text-decoration: underline !important; color: var(--second-color) !important;" href="LoginIn.php">Log In</a></p>
             </div>
         </div>
     </form>
@@ -95,8 +101,9 @@
         let userForm = document.getElementById("userName");
         let companyForm = document.getElementById("orgName");
         let inputs = document.querySelectorAll("input");
-        console.log(userBtn);
-        console.log(companyBtn);
+        let fields = document.getElementsByTagName("fieldset")
+        let par = document.querySelectorAll("fieldset + p")
+
         userBtn.addEventListener("click", (e)=>{
             e.preventDefault()
             inputs.forEach(ele => {
@@ -121,22 +128,65 @@
             userForm.classList.add("hide");
             companyForm.classList.remove("hide");
         })
+        //End type signUp choices
+        // Start Full Name Check
+        function isValidName(name) {
+            if (name.length === 0) {
+                par[0].innerHTML = "This Input Is Required!"
+                par[0].classList.add("error");
+                fields[0].classList.add("input-error");
+            }
+        }
+        // End Full Name Check
+        // Start Password Check
+        function isValidPass(pass) {
+            if (pass.length === 0) {
+                par[4].classList.remove("error2");
+                fields[4].classList.remove("input-error")
+                par[3].innerHTML = "This Input Is Required!"
+                par[3].classList.add("error");
+                fields[3].classList.add("input-error");
+            }
+        }
+        // End Password Check
+        // Start Email Check
+        function isValidEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (email.length === 0) {
+                par[2].innerHTML = "This Input Is Required!"
+                fields[2].classList.add("input-error");
+                par[2].classList.add("error");
+            } else if (!emailPattern.test(email)) {
+                fields[2].classList.add("input-error");
+                par[2].classList.add("error")
+                par[2].innerHTML = "This Email Is Not Valid!"
+            } else if (emailPattern.test(email)) {
+                fields[2].classList.remove("input-error");
+                par[2].classList.remove("error")
+            }
+        }
+
+        // End Email Check
+        // Start Password Check
         let Cpassword = document.getElementById('Cpassword');
         Cpassword.addEventListener("focusout", ()=>{
             let password = document.getElementById('password');
             if(Cpassword.value !== password.value){
-                par1 = password.parentElement;
-                par2 = Cpassword.parentElement;
-                par1.classList.add('focusout');
-                par2.classList.add('focusout');
-            }else{
-                par1 = password.parentElement;
-                par2 = Cpassword.parentElement;
-                par1.classList.remove('focusout');
-                par2.classList.remove('focusout');
+                par[3].classList.add('error');
+                par[4].classList.add('error2');
+                fields[3].classList.add("input-error")
+                fields[4].classList.add("input-error")
+                par[3].innerHTML = "The Passwords Does Not Match!"
+            } else{
+                let par = document.querySelectorAll("fieldset + p")
+                par[3].classList.remove('error');
+                par[4].classList.remove('error2');
+                fields[3].classList.remove("input-error")
+                fields[4].classList.remove("input-error")
             }
         })
-        //End type signUp choices
+        // End Password Check
     </script>
 
 </body>

@@ -38,7 +38,7 @@ form{
             background-color: transparent;
             height: 50%;
             font-size: 20px;
-            color: var(--text-color);
+            color: inherit;
             width: 100%;
             &:focus{
                 outline: none;
@@ -118,6 +118,7 @@ form{
 .input-error {
     margin-bottom: 0px;
     border-color: red;
+    color: red;
 }
 .focusout{
     border: 1px solid red;

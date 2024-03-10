@@ -4,6 +4,10 @@
 
     session_start();
 
+    if (isset($_SESSION['type'])) {
+        header('Location: Home.php');
+    }
+
     $errors = ["email" => "This Email Is Not Valid!", "password" => ""];
 
     // Login authentication
@@ -18,6 +22,7 @@
 
             if (mysqli_num_rows($result) == 1) {
                 $row = mysqli_fetch_assoc($result);
+                $_SESSION["id"] = $row["id"];
                 $_SESSION["Oemail"] = $row["email"];
                 $_SESSION["password"] = $row["password"];
                 $_SESSION["type"] = $row["type"];
@@ -27,21 +32,41 @@
             }
         } else if (!empty($email) && empty($Oemail)) {
 
+            // Try The Admins DB First so if its an admin he gets logged in first
             $sqladmin = "SELECT * FROM admins WHERE email = '$email' AND password = '$password'";
 
-            if (mysqli_query($conn, $sqladmin)) {
-                $result = mysqli_query($conn, $sqladmin);
-            } else {
-                $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
-                $result = mysqli_query($conn, $sql);
-            }
+            $resul = mysqli_query($conn, $sqladmin);
 
-            if (mysqli_num_rows($result) == 1) {
-                echo "Login successful!";
+            if (mysqli_num_rows($resul) == 1) {
+                // Store Admin's Data in A session
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION["id"] = $row["id"];
+                $_SESSION["email"] = $row["email"];
+                $_SESSION["password"] = $row["password"];
+                $_SESSION["type"] = $row["type"];
                 header('Location: Home.php');
             } else {
-                echo "Invalid email or password.";
+                // its not an admin so logged him in as a user
+                $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) == 1) {
+                    $row = mysqli_fetch_assoc($result);
+                    $_SESSION["id"] = $row["id"];
+                    $_SESSION["email"] = $row["email"];
+                    $_SESSION["password"] = $row["password"];
+                    $_SESSION["type"] = $row["type"];
+                    header('Location: Home.php');
+                }else {
+                        echo "Invalid email or password.";
+                    }
             }
+
+            // if (mysqli_num_rows($result) == 1) {
+            //     echo "Login successful!";
+            //     header('Location: Home.php');
+            // } else {
+            //     echo "Invalid email or password.";
+            // }
 
         }
 
