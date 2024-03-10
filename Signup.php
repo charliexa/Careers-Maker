@@ -3,9 +3,9 @@
 
     session_start();
 
-    if (isset($_SESSION['type'])) {
-        header('Location: Home.php');
-    }
+    // if (isset($_SESSION['type'])) {
+    //     header('Location: Home.php');
+    // }
 
     $errors = ["name" => "This Name is Not Valid","email" => "This Email Is Not Valid!", "password" => "The Passwords Does Not Match"];
 
@@ -18,17 +18,26 @@
 
     if($PASSWORD === $CPASSWORD){
         if($ORGNAME === ''){
-            // Insert into users table
-            $upload = "INSERT INTO users (name, email, password) VALUES ('$NAME', '$EMAIL', '$PASSWORD')";
-            mysqli_query($conn, $upload);
-            header('Location: Home.php');
-            exit();
+            // check the email first
+            if(!filter_var($EMAIL, FILTER_VALIDATE_EMAIL)){
+                $errors['email'] = 'Email must be a valid email address';
+            } else{
+                // Insesrt into users table
+                $upload = "INSERT INTO users (name, email, password) VALUES ('$NAME', '$EMAIL', '$PASSWORD')";
+                mysqli_query($conn, $upload);
+                header('Location: Home.php');
+                exit();
+            }
         } else if ($NAME === ''){
             // Insert into companies table
-            $upload = "INSERT INTO companies (orgname, email, password) VALUES ('$ORGNAME', '$EMAIL', '$PASSWORD')";
-            mysqli_query($conn, $upload);
-            header('Location: Home.php');
-            exit();
+            if(!filter_var($EMAIL, FILTER_VALIDATE_EMAIL)){
+                $errors['email'] = 'Email must be a valid email address';
+            } else {
+                $upload = "INSERT INTO companies (orgname, email, password) VALUES ('$ORGNAME', '$EMAIL', '$PASSWORD')";
+                mysqli_query($conn, $upload);
+                header('Location: Home.php');
+                exit();
+            }
         }
     }
 }
@@ -46,7 +55,7 @@
     </style>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" onsubmit="">
         <h1>Get Started!</h1>
         <div class="choices">
             <button id="user" class="active">User Account</button>
@@ -54,39 +63,39 @@
         </div>
         <div>
             <div id="userName">
-                <fieldset class="input-error">
+                <fieldset class="">
                     <legend>Full Name</legend>
-                    <input type="text" name="name" id="name" value="">
+                    <input type="text" name="name" id="name" value="" onfocusout="isValidName(this.value)">
                 </fieldset>
                 <p class="" style="display: none;"></p>
             </div>
             <div id="orgName" class="hide">
-                <fieldset class="input-error">
+                <fieldset class="">
                     <legend>Organization name</legend>
-                    <input type="text" name="Oname" id="Oname" value="">
+                    <input type="text" name="Oname" id="Oname" value="" onfocusout="isValidName2(this.value)">
                 </fieldset>
                 <p class="" style="display: none;"></p>
             </div>
             <div>
-                <fieldset class="input-error">
+                <fieldset class="">
                     <legend>Email</legend>
                     <input type="email" name="email" id="email" value="" onfocusout="isValidEmail(this.value)">
                 </fieldset>
                 <p class="" style="display: none;"></p>
             </div>
             <div>
-                <fieldset class="input-error">
+                <fieldset class="">
                     <legend>Password</legend>
                     <input type="password" name="password" id="password" onfocusout="isValidPass(this.value)">
                 </fieldset>
-                <p class="error" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div>
-                <fieldset class="input-error">
+                <fieldset class="">
                     <legend>Confirm password</legend>
                     <input type="password" name="Cpassword" id="Cpassword">
                 </fieldset>
-                <p class="error2" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" id="submit" value="Sign Up">
@@ -134,11 +143,26 @@
         })
         //End type signUp choices
         // Start Full Name Check
+        // UserName
         function isValidName(name) {
             if (name.length === 0) {
                 par[0].innerHTML = "This Input Is Required!"
                 par[0].classList.add("error");
                 fields[0].classList.add("input-error");
+            } else {
+                par[0].classList.remove("error");
+                fields[0].classList.remove("input-error");
+            }
+        }
+        // OrgName
+        function isValidName2(name) {
+            if (name.length === 0) {
+                par[1].innerHTML = "This Input Is Required!"
+                par[1].classList.add("error");
+                fields[1].classList.add("input-error");
+            } else {
+                par[1].classList.remove("error");
+                fields[1].classList.remove("input-error");
             }
         }
         // End Full Name Check
@@ -162,15 +186,14 @@
                 fields[2].classList.add("input-error");
                 par[2].classList.add("error");
             } else if (!emailPattern.test(email)) {
-                fields[2].classList.add("input-error");
+                fields[2].classList.add("input-error")
                 par[2].classList.add("error")
-                par[2].innerHTML = "This Email Is Not Valid!"
+                par[2].innerHTML = "Email must be a valid email address"
             } else if (emailPattern.test(email)) {
-                fields[2].classList.remove("input-error");
                 par[2].classList.remove("error")
+                fields[2].classList.remove("input-error");
             }
         }
-
         // End Email Check
         // Start Password Check
         let Cpassword = document.getElementById('Cpassword');
@@ -182,6 +205,7 @@
                 fields[3].classList.add("input-error")
                 fields[4].classList.add("input-error")
                 par[3].innerHTML = "The Passwords Does Not Match!"
+                par[4].innerHTML = "The Passwords Does Not Match!"
             } else{
                 let par = document.querySelectorAll("fieldset + p")
                 par[3].classList.remove('error');
@@ -191,50 +215,6 @@
             }
         })
         // End Password Check
-        email.addEventListener("focusout", ()=>{
-            if(email.value === ""){
-                eparent = email.parentElement;
-                eparent.classList.add('input-error');
-                error[2].classList.remove('hide');
-                
-            }else{
-                eparent = email.parentElement;
-                eparent.classList.remove('input-error');
-                error[2].classList.add('hide');
-                email.style.color = "#b0b9d8";
-            }
-            if(!isValidEmail(email.value)){
-                email.style.color = "red";
-                eparent.classList.add('input-error');
-                error[2].classList.remove('hide');
-                error[2].innerHTML = 'Email format is not valid';
-            }
-        })
-        let Oemail = document.getElementById('Oemail');
-        Oemail.addEventListener("focusout", ()=>{
-            if(Oemail.value === ""){
-                Oeparent = Oemail.parentElement;
-                Oeparent.classList.add('input-error');
-                error[3].classList.remove('hide');
-            }else{
-                Oeparent = email.parentElement;
-                Oeparent.classList.remove('input-error');
-                error[3].classList.add('hide');
-                email.style.color = "#b0b9d8";  
-            }
-            if(!isValidEmail(email.value)){
-                email.style.color = "red";
-                eparent.classList.add('input-error');
-                error[3].classList.remove('hide');
-                error[3].innerHTML = 'Email format is not valid';
-            }
-        })
-        // End Focus Out Email is valid
-        // regex email
-        function isValidEmail(email) {
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return emailPattern.test(email);
-        }
     </script>
 
 </body>

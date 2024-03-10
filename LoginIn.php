@@ -4,9 +4,9 @@
 
     session_start();
 
-    if (isset($_SESSION['type'])) {
-        header('Location: Home.php');
-    }
+    // if (isset($_SESSION['type'])) {
+    //     header('Location: Home.php');
+    // }
 
     $is_valide = '';
 
@@ -32,6 +32,7 @@
             } else {
                 $is_valide = 'no';
             }
+
         } else if (!empty($email) && empty($Oemail)) {
 
             // Try The Admins DB First so if its an admin he gets logged in first
@@ -58,6 +59,7 @@
                 header('Location: Home.php');
             } else {
                 echo "Invalid email or password.";
+                $is_valide = 'no';
             }
 
         }
@@ -85,8 +87,8 @@
     <form action="" method="post" id="form">
         <h1>Welcome Back!</h1>
         <div class="choices">
-            <button id="user" class="active">User Account</button>
-            <button id="company" >Company Account</button>
+            <button id="user" class="active" onclick="Reset()">User Account</button>
+            <button id="company" onclick="Reset()">Company Account</button>
         </div>
         <div>
         <div id="userName">
@@ -111,7 +113,7 @@
                 <p class="error2 hide"></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
-                <input type="submit" name="submit" value="Login In" id="submit">
+                <input type="submit" name="submit" value="Login In" id="submit" onclick="IsValidInfos()">
                 <p style="color: var(--text-color);">Don't Have An Account? <a style="text-decoration: underline !important; color: var(--second-color) !important;" href="Signup.php">Sign Up</a></p>
             </div>
         </div>
@@ -123,8 +125,7 @@
         let userForm = document.getElementById("userName");
         let companyForm = document.getElementById("orgName");
         let inputs = document.querySelectorAll("input");
-        console.log(userBtn);
-        console.log(companyBtn);
+
         userBtn.addEventListener("click", (e)=>{
             e.preventDefault()
             inputs.forEach(ele => {
@@ -209,16 +210,25 @@
         }
         // regex email
         ///////////////
-        let valid = "<?php echo $is_valide?>";
-        if(valid !== ""){
+        function IsValidInfos() {
+            let valid = "<?php echo $is_valide?>";
+            if(valid !== ""){
+                error[0].classList.remove('hide');
+                error[1].classList.remove('hide');
+                error2.classList.remove('hide');
+                error[0].innerHTML = "Wrong Email or Password!";
+                error[1].innerHTML = "Wrong Email or Password!";
+                error2.innerHTML = "Wrong Email or Password!";
+                password.parentElement.classList.add('input-error');
+                email.parentElement.classList.add('input-error');
+            }
+        }
+        function Reset() {
+            password.parentElement.classList.remove('input-error');
+            email.parentElement.classList.remove('input-error');
             error[0].classList.remove('hide');
             error[1].classList.remove('hide');
             error2.classList.remove('hide');
-            error[0].innerHTML = "wrong Email or Password";
-            error[1].innerHTML = "wrong Email or Password";
-            error2.innerHTML = "wrong Email or Password";
-            password.parentElement.classList.add('input-error');
-            email.parentElement.classList.add('input-error');
         }
         ///////////////
     </script>
