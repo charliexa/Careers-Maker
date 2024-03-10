@@ -54,39 +54,39 @@
         </div>
         <div>
             <div id="userName">
-                <fieldset class="field1">
+                <fieldset class="input-error">
                     <legend>Full Name</legend>
                     <input type="text" name="name" id="name" value="">
                 </fieldset>
-                <p class="" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"></p>
             </div>
             <div id="orgName" class="hide">
-                <fieldset class="field2">
+                <fieldset class="input-error">
                     <legend>Organization name</legend>
                     <input type="text" name="Oname" id="Oname" value="">
                 </fieldset>
-                <p class="" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"></p>
             </div>
             <div>
-                <fieldset class="field3">
+                <fieldset class="input-error">
                     <legend>Email</legend>
                     <input type="email" name="email" id="email" value="" onfocusout="isValidEmail(this.value)">
                 </fieldset>
-                <p class="" style="display: none;"><?php echo "ee" ?></p>
+                <p class="" style="display: none;"></p>
             </div>
             <div>
-                <fieldset class="field4">
+                <fieldset class="input-error">
                     <legend>Password</legend>
                     <input type="password" name="password" id="password" onfocusout="isValidPass(this.value)">
                 </fieldset>
-                <p class="" style="display: none;"><?php echo $errors["password"] ?></p>
+                <p class="error" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div>
-                <fieldset class="field5">
+                <fieldset class="input-error">
                     <legend>Confirm password</legend>
                     <input type="password" name="Cpassword" id="Cpassword">
                 </fieldset>
-                <p class="" style="display: none;"><?php echo $errors["password"] ?></p>
+                <p class="error2" style="display: none;"><?php echo "ee" ?></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
                 <input type="submit" name="submit" id="submit" value="Sign Up">
@@ -101,6 +101,10 @@
         let userForm = document.getElementById("userName");
         let companyForm = document.getElementById("orgName");
         let inputs = document.querySelectorAll("input");
+        let error = document.querySelectorAll(".error");
+        let error2 = document.querySelector(".error2");
+        let email = document.getElementById('email');
+        let password = document.getElementById('password');
         let fields = document.getElementsByTagName("fieldset")
         let par = document.querySelectorAll("fieldset + p")
 
@@ -187,6 +191,50 @@
             }
         })
         // End Password Check
+        email.addEventListener("focusout", ()=>{
+            if(email.value === ""){
+                eparent = email.parentElement;
+                eparent.classList.add('input-error');
+                error[2].classList.remove('hide');
+                
+            }else{
+                eparent = email.parentElement;
+                eparent.classList.remove('input-error');
+                error[2].classList.add('hide');
+                email.style.color = "#b0b9d8";
+            }
+            if(!isValidEmail(email.value)){
+                email.style.color = "red";
+                eparent.classList.add('input-error');
+                error[2].classList.remove('hide');
+                error[2].innerHTML = 'Email format is not valid';
+            }
+        })
+        let Oemail = document.getElementById('Oemail');
+        Oemail.addEventListener("focusout", ()=>{
+            if(Oemail.value === ""){
+                Oeparent = Oemail.parentElement;
+                Oeparent.classList.add('input-error');
+                error[3].classList.remove('hide');
+            }else{
+                Oeparent = email.parentElement;
+                Oeparent.classList.remove('input-error');
+                error[3].classList.add('hide');
+                email.style.color = "#b0b9d8";  
+            }
+            if(!isValidEmail(email.value)){
+                email.style.color = "red";
+                eparent.classList.add('input-error');
+                error[3].classList.remove('hide');
+                error[3].innerHTML = 'Email format is not valid';
+            }
+        })
+        // End Focus Out Email is valid
+        // regex email
+        function isValidEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailPattern.test(email);
+        }
     </script>
 
 </body>
