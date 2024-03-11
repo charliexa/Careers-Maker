@@ -4,10 +4,11 @@
 
     $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
 
-    if (isset($_SESSION)) {
+    if (isset($_SESSION["name"])) {
         $name = $_SESSION["name"];
     } else {
         $name = "";
+        header('Location: LoginIn.php');
     }
 
 ?>
@@ -50,7 +51,7 @@
             </a>
             <div class="drop-menu d-none">
                 <div class="bg-first border-bottom border-secondary" style="user-select: none;cursor: pointer;">Profile</div>
-                <div class="bg-first" style="user-select: none;cursor: pointer;">Log Out</div>
+                <div class="bg-first" style="user-select: none;cursor: pointer;"><a class="w-100 h-100" style="color: inherit !important;" href="LogOut.php">Log Out</a></div>
             </div>
         </div>
     </header>
