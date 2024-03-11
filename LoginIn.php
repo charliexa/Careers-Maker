@@ -4,14 +4,7 @@
 
     session_start();
 
-    $is_valide = "";
-
     $error = isset($_GET['error']) ? $_GET['error'] : 0;
-
-    if ($error == 1) {
-        // $is_valide = "no";
-        echo 'no';
-    }
 
     if (!isset($_SESSION)) {
         header('Location: Home.php');
