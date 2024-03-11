@@ -45,7 +45,7 @@
         </nav>
         <div class="prf fs-4" style="padding-left: 10px;" id="<?php echo substr($curPageName, 0, -4)?>">
             <a style="margin-right: 6px !important; cursor: pointer;" onclick="Drop()">
-                <i class="fa-regular fa-user fs-4"></i><p style="user-select: none;"><?php echo htmlspecialchars($name) ?></p>
+                <span style="height: 35px;width:35px;border-radius:50%;background-color:black;"></span><p style="user-select: none;"><?php echo htmlspecialchars($name) ?></p>
                 <i class="fa-solid fa-caret-down"></i>
             </a>
             <div class="drop-menu d-none">
