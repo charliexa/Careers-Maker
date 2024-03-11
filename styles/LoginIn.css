@@ -73,9 +73,6 @@ form{
     border-radius: 10px;
     display: block !important;
 }
-.hide{
-    display: none;
-}
 #submit{
     color: var(--text-color);
     box-shadow: 0px 0px 10px 1px black;
@@ -110,7 +107,7 @@ form{
     margin-left: 30px;
     margin-top: 5px;
     margin-bottom: -15px;
-    display: block !important;
+    display: block;
 }
 .error2 {
     margin-bottom: 10px !important;
@@ -118,4 +115,7 @@ form{
 .input-error {
     margin-bottom: 0px;
     border-color: red;
+}
+.hide{
+    display: none;
 }

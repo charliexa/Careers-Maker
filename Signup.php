@@ -3,9 +3,9 @@
 
     session_start();
 
-    // if (isset($_SESSION['type'])) {
-    //     header('Location: Home.php');
-    // }
+    if (!isset($_SESSION)) {
+        header('Location: Home.php');
+    }
 
     $errors = ["name" => "This Name is Not Valid","email" => "This Email Is Not Valid!", "password" => "The Passwords Does Not Match"];
 
@@ -216,6 +216,5 @@
         })
         // End Password Check
     </script>
-
 </body>
 </html>

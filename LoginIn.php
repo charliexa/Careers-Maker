@@ -4,11 +4,18 @@
 
     session_start();
 
-    // if (isset($_SESSION['type'])) {
-    //     header('Location: Home.php');
-    // }
+    $is_valide = "";
 
-    $is_valide = '';
+    $error = isset($_GET['error']) ? $_GET['error'] : 0;
+
+    if ($error == 1) {
+        // $is_valide = "no";
+        echo 'no';
+    }
+
+    if (!isset($_SESSION)) {
+        header('Location: Home.php');
+    }
 
     $errors = ["email" => "This Email Is Not Valid!", "password" => ""];
 
@@ -32,7 +39,7 @@
                 $_SESSION["created_at"] = $row["created_at"];
                 header('Location: Home.php');
             } else {
-                $is_valide = 'no';
+                header('Location: LoginIn.php?error=2');
             }
 
         } else if (!empty($email) && empty($Oemail)) {
@@ -61,7 +68,6 @@
                 header('Location: Home.php');
             } else {
                 echo "Invalid email or password.";
-                $is_valide = 'no';
             }
 
         }
@@ -89,33 +95,33 @@
     <form action="" method="post" id="form">
         <h1>Welcome Back!</h1>
         <div class="choices">
-            <button id="user" class="active" onclick="Reset()">User Account</button>
-            <button id="company" onclick="Reset()">Company Account</button>
+            <button id="user" <?php if ($error == 1) {echo "class='active'";} ?> onclick="Reset()">User Account</button>
+            <button id="company" <?php if ($error == 2) {echo "class='active'";} ?> onclick="Reset()">Company Account</button>
         </div>
         <div>
-        <div id="userName">
-                <fieldset>
+        <div id="userName" <?php if ($error == 2) {echo "class='hide'";}?>>
+                <fieldset >
                     <legend>Email</legend>
-                    <input oncfo type="text" name="email" id="email" value="" >
+                    <input <?php if ($error > 0) {echo "style='color: red !important;'";} ?> type="text" name="email" id="email" value="" >
                 </fieldset>
-                <p class="error hide"></p>
+                <p class="error hide">asdf</p>
             </div>
-            <div id="orgName" class="hide">
+            <div id="orgName" <?php if ($error == 1) {echo "class='hide'";}?>>
                 <fieldset>
                     <legend>Email</legend>
-                    <input type="text" name="Oemail" id="Oemail" value="">
+                    <input <?php if ($error > 0) {echo "style='color: red !important;'";} ?> type="text" name="Oemail" id="Oemail" value="">
                 </fieldset>
-                <p class="error hide"></p>
+                <p class="error hide">asdf</p>
             </div>
             <div>
                 <fieldset>
                     <legend>Password</legend>
-                    <input type="password" name="password" id="password">
+                    <input <?php if ($error == 1) {echo "style='color: red !important;'";} ?> type="password" name="password" id="password">
                 </fieldset>
                 <p class="error2 hide"></p>
             </div>
             <div class="submit-cont" style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
-                <input type="submit" name="submit" value="Login In" id="submit" onclick="IsValidInfos()">
+                <input type="submit" name="submit" value="Login In" id="submit">
                 <p style="color: var(--text-color);">Don't Have An Account? <a style="text-decoration: underline !important; color: var(--second-color) !important;" href="Signup.php">Sign Up</a></p>
             </div>
         </div>
@@ -141,8 +147,8 @@
             submit.value = "Login In"
             userBtn.classList.add("active");
             companyBtn.classList.remove("active");
-            userForm.classList.remove("hide");
-            companyForm.classList.add("hide");
+            userForm.style.display = "block"
+            companyForm.style.display = "none"
         })
         companyBtn.addEventListener("click", (e)=>{
             e.preventDefault()
@@ -157,8 +163,8 @@
             submit.value = "Login In"
             userBtn.classList.remove("active");
             companyBtn.classList.add("active");
-            userForm.classList.add("hide");
-            companyForm.classList.remove("hide");
+            userForm.style.display = "none"
+            companyForm.style.display = "block"
         })
         //End type signUp choices
         // Start Focus Out Email is valid
@@ -166,12 +172,19 @@
         let error2 = document.querySelector(".error2");
         let email = document.getElementById('email');
         let password = document.getElementById('password');
+
+        // regex email
+        function isValidEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailPattern.test(email);
+        }
+        // regex email
+
         email.addEventListener("focusout", ()=>{
             if(email.value === ""){
                 eparent = email.parentElement;
                 eparent.classList.add('input-error');
                 error[0].classList.remove('hide');
-                
             }else{
                 eparent = email.parentElement;
                 eparent.classList.remove('input-error');
@@ -192,48 +205,51 @@
                 Oeparent.classList.add('input-error');
                 error[1].classList.remove('hide');
             }else{
-                Oeparent = email.parentElement;
+                Oeparent = Oemail.parentElement;
                 Oeparent.classList.remove('input-error');
                 error[1].classList.add('hide');
-                email.style.color = "#b0b9d8";  
+                Oemail.style.color = "#b0b9d8";
             }
-            if(!isValidEmail(email.value)){
-                email.style.color = "red";
-                eparent.classList.add('input-error');
+            if(!isValidEmail(Oemail.value)){
+                Oemail.style.color = "red";
+                Oeparent.classList.add('input-error');
                 error[1].classList.remove('hide');
                 error[1].innerHTML = 'Email format is not valid';
             }
         })
         // End Focus Out Email is valid
-        // regex email
-        function isValidEmail(email) {
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return emailPattern.test(email);
-        }
-        // regex email
         ///////////////
-        let valid = "<?php echo $is_valide?>";
-        function IsValidInfos() {
-            if(valid !== ""){
 
-                error[0].classList.remove('hide');
-                error[1].classList.remove('hide');
-                error2.classList.remove('hide');
-                error[0].innerHTML = "Wrong Email or Password!";
-                error[1].innerHTML = "Wrong Email or Password!";
-                error2.innerHTML = "Wrong Email or Password!";
-                password.parentElement.classList.add('input-error');
-                email.parentElement.classList.add('input-error');
-            }
-        }
+            let errorss = "<?php echo $error?>";
+            if(errorss > 0) {
+                    error[0].classList.remove('hide');
+                    error[1].classList.remove('hide');
+                    error2.classList.remove('hide');
+                    email.style.color = "red";
+                    Oemail.style.color = "red";
+                    password.style.color = "red";
+                    error[0].innerHTML = "Wrong Email or Password!";
+                    error[1].innerHTML = "Wrong Email or Password!";
+                    error2.innerHTML = "Wrong Email or Password!";
+                    password.parentElement.classList.add('input-error');
+                    email.parentElement.classList.add('input-error');
+                    Oemail.parentElement.classList.add('input-error');
+                }
         function Reset() {
             password.parentElement.classList.remove('input-error');
             email.parentElement.classList.remove('input-error');
-            error[0].classList.remove('hide');
-            error[1].classList.remove('hide');
-            error2.classList.remove('hide');
+            Oemail.parentElement.classList.remove('input-error');
+            error[0].classList.add('hide');
+            error[1].classList.add('hide');
+            error2.classList.add('hide');
         }
         ///////////////
+        // A shy validation if there is error or not to prevent the default thiings ordred by php to the buttons elements
+        if (errorss == 0) {
+            userBtn.classList.add("active");
+            companyForm.style.display = "none"
+        }
+
     </script>
 </body>
 </html>
